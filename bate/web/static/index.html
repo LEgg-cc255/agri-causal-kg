@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>农业因果知识图谱系统</title>
+    <!-- vis.js Network: 优先本地静态文件（零CDN依赖，避免被墙/拦截），失败再兜底CDN -->
+    <script>
+        // vis.js 加载状态标志
+        window._visLoadError = null;
+        window._visLoadOk = false;
+    </script>
+    <script src="/static/vendor/vis-network.min.js"
+            onload="window._visLoadOk=true;"
+            onerror="this.onerror=null;
+                     window._visLoadError='本地静态文件加载失败，尝试 jsdelivr CDN';
+                     var s=document.createElement('script');
+                     s.src='https://cdn.jsdelivr.net/npm/vis-network@9.1.9/standalone/umd/vis-network.min.js';
+                     s.onerror=function(){window._visLoadError='jsdelivr失败，尝试 unpkg CDN';
+                         var s2=document.createElement('script');
+                         s2.src='https://unpkg.com/vis-network@9.1.9/standalone/umd/vis-network.min.js';
+                         s2.onload=function(){window._visLoadOk=true;};
+                         s2.onerror=function(){window._visLoadError='所有 vis-network CDN 均失败';};
+                         document.head.appendChild(s2);
+                     };
+                     s.onload=function(){window._visLoadOk=true;};
+                     document.head.appendChild(s);"></script>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- 顶部固定栏：标题 + 统计 + 标签页导航 -->
+    <div class="top-bar">
+        <header class="app-header">
+            <div class="header-left">
+                <h1>🌾 农业因果知识图谱系统</h1>
+                <span class="subtitle">AgriCausal KG Visualization</span>
+            </div>
+            <div class="stats-bar" id="statsBar">
+                <div class="stat-item">
+                    <span class="stat-label">节点数</span>
+                    <span class="stat-value" id="statNodes">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">因果边</span>
+                    <span class="stat-value" id="statEdges">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">禁止边</span>
+                    <span class="stat-value" id="statForbid">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Neo4j</span>
+                    <span class="stat-value" id="statVersion">-</span>
+                </div>
+                <div class="stat-item class-dist" id="classDist">
+                    <span class="stat-label">大类分布</span>
+                    <span class="stat-value" id="statClassDist">-</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 标签页导航 -->
+        <nav class="tab-nav">
+            <button class="tab-btn active" data-tab="extract">因果抽取</button>
+            <button class="tab-btn" data-tab="graph">因果图</button>
+            <button class="tab-btn" data-tab="search">路径搜索</button>
+            <button class="tab-btn" data-tab="answer">端到端问答</button>
+        </nav>
+    </div>
+
+    <!-- 主内容区 -->
+    <main class="tab-content">
+        <!-- Tab 1: 因果抽取 -->
+        <section class="tab-panel active" id="tab-extract">
+            <div class="layout">
+                <aside class="control-panel">
+                    <h2>因果事件抽取</h2>
+                    <p class="hint">输入农业论文/文本，自动抽取事件、因果对、因果链</p>
+                    <label class="field-label">输入文本</label>
+                    <textarea id="extractText" rows="12" placeholder="例如：高温胁迫导致花粉活力下降，进而引起空壳率上升..."></textarea>
+                    <div class="btn-row">
+                        <button class="btn btn-primary" id="btnExtract" onclick="runExtract()">开始抽取</button>
+                        <button class="btn btn-secondary" onclick="loadSampleText()">载入示例</button>
+                        <button class="btn btn-ghost" onclick="clearExtract()">清空</button>
+                    </div>
+                    <div class="loading" id="extractLoading" style="display:none;">
+                        <div class="spinner"></div>
+                        <span>抽取中，请稍候...</span>
+                    </div>
+                </aside>
+                <section class="output-area">
+                    <div id="extractResult" class="result-container">
+                        <div class="empty-state">
+                            <div class="empty-icon">📝</div>
+                            <p>请在左侧输入文本并点击「开始抽取」</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <!-- Tab 2: 因果图 -->
+        <section class="tab-panel" id="tab-graph">
+            <div class="layout graph-layout">
+                <aside class="control-panel">
+                    <h2>因果图可视化</h2>
+                    <p class="hint">Neo4j 因果图谱（vis.js 渲染）</p>
+                    <div class="btn-row">
+                        <button class="btn btn-primary" onclick="loadGraph()">加载/刷新图谱</button>
+                        <button class="btn btn-secondary" onclick="fitGraph()">适应屏幕</button>
+                    </div>
+                    <div class="loading" id="graphLoading" style="display:none;">
+                        <div class="spinner"></div>
+                        <span>加载图谱中...</span>
+                    </div>
+                    <hr class="divider">
+                    <h3>节点图例</h3>
+                    <ul class="legend" id="legendList"></ul>
+                    <hr class="divider">
+                    <h3>操作说明</h3>
+                    <ul class="tips">
+                        <li>鼠标拖拽：移动节点</li>
+                        <li>滚轮：缩放</li>
+                        <li>空白拖拽：平移视图</li>
+                        <li>点击节点：高亮邻居</li>
+                        <li>双击节点：取消高亮</li>
+                    </ul>
+                </aside>
+                <section class="output-area graph-area">
+                    <div id="graphNetwork" class="vis-network-container"></div>
+                </section>
+            </div>
+        </section>
+
+        <!-- Tab 3: 路径搜索 -->
+        <section class="tab-panel" id="tab-search">
+            <div class="layout">
+                <aside class="control-panel">
+                    <h2>因果路径搜索</h2>
+                    <p class="hint">Step 2 双向检索 + 4维排序</p>
+                    <label class="field-label">问题</label>
+                    <input type="text" id="searchQuestion" placeholder="例如：高温胁迫会导致什么？">
+                    <label class="field-label">检索方向</label>
+                    <select id="searchDirection">
+                        <option value="forward">forward（正向：A→B）</option>
+                        <option value="backward" selected>backward（反向：原因溯源）</option>
+                    </select>
+                    <div class="param-row">
+                        <div class="param-item">
+                            <label class="field-label">最大跳数</label>
+                            <input type="number" id="searchMaxHops" value="4" min="1" max="8">
+                        </div>
+                        <div class="param-item">
+                            <label class="field-label">Top-K</label>
+                            <input type="number" id="searchTopK" value="5" min="1" max="20">
+                        </div>
+                    </div>
+                    <div class="btn-row">
+                        <button class="btn btn-primary" id="btnSearch" onclick="runSearch()">搜索路径</button>
+                        <button class="btn btn-ghost" onclick="clearSearch()">清空</button>
+                    </div>
+                    <div class="loading" id="searchLoading" style="display:none;">
+                        <div class="spinner"></div>
+                        <span>检索路径中...</span>
+                    </div>
+                </aside>
+                <section class="output-area">
+                    <div id="searchResult" class="result-container">
+                        <div class="empty-state">
+                            <div class="empty-icon">🔍</div>
+                            <p>输入问题，查找因果路径</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <!-- Tab 4: 端到端问答 -->
+        <section class="tab-panel" id="tab-answer">
+            <div class="layout">
+                <aside class="control-panel">
+                    <h2>端到端可解释问答</h2>
+                    <p class="hint">Step1 解析 → Step2 检索 → Step3 生成</p>
+                    <label class="field-label">问题</label>
+                    <input type="text" id="answerQuestion" placeholder="例如：干旱如何影响水稻产量？">
+                    <div class="param-row">
+                        <div class="param-item">
+                            <label class="field-label">最大跳数</label>
+                            <input type="number" id="answerMaxHops" value="4" min="1" max="8">
+                        </div>
+                        <div class="param-item">
+                            <label class="field-label">Top-K</label>
+                            <input type="number" id="answerTopK" value="5" min="1" max="20">
+                        </div>
+                    </div>
+                    <div class="btn-row">
+                        <button class="btn btn-primary" id="btnAnswer" onclick="runAnswer()">生成解释</button>
+                        <button class="btn btn-ghost" onclick="clearAnswer()">清空</button>
+                    </div>
+                    <div class="loading" id="answerLoading" style="display:none;">
+                        <div class="spinner"></div>
+                        <span>生成回答中（仅1次LLM调用）...</span>
+                    </div>
+                </aside>
+                <section class="output-area">
+                    <div id="answerResult" class="result-container">
+                        <div class="empty-state">
+                            <div class="empty-icon">💡</div>
+                            <p>输入问题，生成可解释的因果回答</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <!-- 全局错误提示 -->
+    <div class="toast" id="toast"></div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

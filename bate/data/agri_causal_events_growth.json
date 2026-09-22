@@ -1,0 +1,4147 @@
+{
+  "dataset_info": {
+    "name": "农业因果事件数据集 - 主动学习增长集 (ACED-Growth)",
+    "version": "1.0",
+    "description": "由主动学习模块产出、待人工复核后并入金标集的因果对。",
+    "construction_method": "主动学习：Pipeline抽取 + 人工校验(y/n/r)。",
+    "statistics": {
+      "num_documents": 20,
+      "num_causal_pairs": 187,
+      "num_causal_chains": 0,
+      "domains": [
+        "多作物综述",
+        "小麦",
+        "水稻",
+        "水稻-灌溉管理",
+        "水稻-盐碱胁迫",
+        "水稻-高温胁迫",
+        "玉米",
+        "玉米-盐碱胁迫",
+        "茶树",
+        "设施蔬菜-番茄"
+      ]
+    }
+  },
+  "documents": [
+    {
+      "doc_id": "DOC-001",
+      "domain": "设施蔬菜-番茄",
+      "title": "设施栽培番茄的高温障碍减轻对策与其效果",
+      "source": {
+        "type": "政府科研机构报告",
+        "publisher": "日本农林水产省 农业食品产业技术综合研究机构 (NARO) 野菜花き研究部门",
+        "author": "小郷裕子 (主任研究員)",
+        "year": 2025,
+        "url": "https://vegetable.alic.go.jp/yasaijoho/senmon/2508_chosa1.html",
+        "publication": "野菜情報 2025年8月号"
+      },
+      "text": "近年气候变动影响下夏季异常高温常态化，番茄栽培中生理障碍与栽培管理困难显著化。日平均气温超过25℃的高温遭遇时，着果率减少。高温条件下花粉稔性低下是着果不良与肥大不良的原因之一。气化热冷却（细雾冷房/パッドアンドファン）可使设施内气温降低2℃以上，由于昇温抑制可减少遮光カーテン使用，设施内日射量更充足。",
+      "causal_pairs": [
+        {
+          "pair_id": "DOC-001-G01",
+          "cause_event": {
+            "text": "花粉稔性低下",
+            "type": "CAUSE_EVENT",
+            "concept": "花粉活力下降"
+          },
+          "effect_event": {
+            "text": "肥大不良",
+            "type": "EFFECT_EVENT",
+            "concept": "灌浆不良"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.825,
+          "evidence": "花粉稔性低下是肥大不良的原因之一",
+          "evidence_source": "DOC-001",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-001-G02",
+          "cause_event": {
+            "text": "高温条件",
+            "type": "CAUSE_EVENT",
+            "concept": "高温胁迫"
+          },
+          "effect_event": {
+            "text": "花粉稔性低下",
+            "type": "EFFECT_EVENT",
+            "concept": "花粉活力下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.94,
+          "evidence": "高温条件下花粉稔性低下",
+          "evidence_source": "DOC-001",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-001-G03",
+          "cause_event": {
+            "text": "遮光カーテン使用减少",
+            "type": "CAUSE_EVENT",
+            "concept": "光照充足"
+          },
+          "effect_event": {
+            "text": "设施内日射量更充足",
+            "type": "EFFECT_EVENT",
+            "concept": "日射量充足"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.9,
+          "evidence": "设施内日射量更充足",
+          "evidence_source": "DOC-001",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-001-G04",
+          "cause_event": {
+            "text": "昇温抑制",
+            "type": "CAUSE_EVENT",
+            "concept": "温度下降"
+          },
+          "effect_event": {
+            "text": "遮光カーテン使用减少",
+            "type": "EFFECT_EVENT",
+            "concept": "光照充足"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.91,
+          "evidence": "由于昇温抑制可减少遮光カーテン使用",
+          "evidence_source": "DOC-001",
+          "source": "active_learning",
+          "verified": true
+        }
+      ],
+      "causal_chains": []
+    },
+    {
+      "doc_id": "DOC-002",
+      "domain": "设施蔬菜-番茄",
+      "title": "番茄受高温影响导致开花坐果受抑制的原因与对策",
+      "source": {
+        "type": "农业技术科普资料",
+        "publisher": "新厨坊农业技术资料 (综合长江中下游设施番茄田间观察)",
+        "year": 2024,
+        "url": "https://m.xinchufang.com/shipu/072256412853110"
+      },
+      "text": "番茄开花期适宜昼夜温度分别为20-30℃和15-20℃，15℃以下或者35℃以上都不利于花的正常发育。日温超过35℃，雌雄器官在减数分裂的蕾期及开花期受到伤害，花蕾不能正常受精而落蕾。花后3-4天是敏感时期，昼温高于35℃或夜温高于20℃，每穗花数目减少并出现严重落花现象。高温胁迫使得番茄花粉量减少，花药开裂受制，花粉管伸长受制，花粉活力降低。高温造成的干热条件使花柱头高于花药筒，柱头变褐干燥枯萎，授粉率降低，造成落花。夜间温度高使番茄植株营养生长加速，造成徒长，更多营养分配到茎秆和叶片，对花的养分供应不足，造成落花。",
+      "causal_pairs": [
+        {
+          "pair_id": "DOC-002-G01",
+          "cause_event": {
+            "text": "雌雄器官在减数分裂的蕾期及开花期受到伤害",
+            "type": "CAUSE_EVENT",
+            "concept": "生殖器官受损"
+          },
+          "effect_event": {
+            "text": "花蕾不能正常受精而落蕾",
+            "type": "EFFECT_EVENT",
+            "concept": "落花落蕾"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.94,
+          "evidence": "花蕾不能正常受精而落蕾",
+          "evidence_source": "DOC-002",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-002-G02",
+          "cause_event": {
+            "text": "昼温高于35℃或夜温高于20℃",
+            "type": "CAUSE_EVENT",
+            "concept": "高温胁迫"
+          },
+          "effect_event": {
+            "text": "每穗花数目减少",
+            "type": "EFFECT_EVENT",
+            "concept": "穗粒数减少"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "昼温高于35℃或夜温高于20℃，每穗花数目减少",
+          "evidence_source": "DOC-002",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-002-G03",
+          "cause_event": {
+            "text": "夜间温度高",
+            "type": "CAUSE_EVENT",
+            "concept": "高温胁迫"
+          },
+          "effect_event": {
+            "text": "番茄植株营养生长加速",
+            "type": "EFFECT_EVENT",
+            "concept": "植株徒长"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "夜间温度高使番茄植株营养生长加速",
+          "evidence_source": "DOC-002",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-002-G04",
+          "cause_event": {
+            "text": "昼温高于35℃或夜温高于20℃",
+            "type": "CAUSE_EVENT",
+            "concept": "高温胁迫"
+          },
+          "effect_event": {
+            "text": "严重落花现象",
+            "type": "EFFECT_EVENT",
+            "concept": "落花落蕾"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "昼温高于35℃或夜温高于20℃，每穗花数目减少并出现严重落花现象",
+          "evidence_source": "DOC-002",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-002-G05",
+          "cause_event": {
+            "text": "高温胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "高温胁迫"
+          },
+          "effect_event": {
+            "text": "花粉活力降低",
+            "type": "EFFECT_EVENT",
+            "concept": "花粉活力下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.96,
+          "evidence": "花粉活力降低",
+          "evidence_source": "DOC-002",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-002-G06",
+          "cause_event": {
+            "text": "高温造成的干热条件",
+            "type": "CAUSE_EVENT",
+            "concept": "高温干热胁迫"
+          },
+          "effect_event": {
+            "text": "柱头变褐干燥枯萎",
+            "type": "EFFECT_EVENT",
+            "concept": "柱头干枯"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.94,
+          "evidence": "柱头变褐干燥枯萎",
+          "evidence_source": "DOC-002",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-002-G07",
+          "cause_event": {
+            "text": "高温胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "高温胁迫"
+          },
+          "effect_event": {
+            "text": "柱头外露",
+            "type": "EFFECT_EVENT",
+            "concept": "柱头外露"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-002",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-002-G08",
+          "cause_event": {
+            "text": "花粉活力下降",
+            "type": "CAUSE_EVENT",
+            "concept": "花粉活力下降"
+          },
+          "effect_event": {
+            "text": "落花落蕾",
+            "type": "EFFECT_EVENT",
+            "concept": "落花落蕾"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-002",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-002-G09",
+          "cause_event": {
+            "text": "花药开裂受阻",
+            "type": "CAUSE_EVENT",
+            "concept": "花药开裂受阻"
+          },
+          "effect_event": {
+            "text": "授粉率下降",
+            "type": "EFFECT_EVENT",
+            "concept": "授粉率下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.88,
+          "evidence": "知识库已知因果(strength=0.88)",
+          "evidence_source": "DOC-002",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-002-G10",
+          "cause_event": {
+            "text": "柱头外露",
+            "type": "CAUSE_EVENT",
+            "concept": "柱头外露"
+          },
+          "effect_event": {
+            "text": "授粉率下降",
+            "type": "EFFECT_EVENT",
+            "concept": "授粉率下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-002",
+          "source": "active_learning",
+          "verified": true
+        }
+      ],
+      "causal_chains": []
+    },
+    {
+      "doc_id": "DOC-003",
+      "domain": "设施蔬菜-番茄",
+      "title": "Heat Stress on the Tomato: Deleterious Effects and Preventive Strategies",
+      "source": {
+        "type": "同行评审期刊综述",
+        "publisher": "MDPI Metabolites",
+        "author": "Qaisar Khan, Yixi Wang, Gengshou Xia, Hui Yang, Zhengrong Luo, Yan Zhang",
+        "affiliation": "Lishui University, Department of Landscape and Horticulture",
+        "year": 2024,
+        "doi": "10.3390/metabo14050283",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11122942/",
+        "publication": "Metabolites 2024, 14, 283"
+      },
+      "text": "Cultivated tomatoes are autogamous plants, and high temperatures negatively impact their pollination. Under high heat stress, the tomato style, which is the female reproductive part of the flower gynoecium holding the stigma, extends abnormally and goes out the antheridial cones, minimizing the chances of pollination and, consequently, reducing fruit sets. Heat stress distorts pollen grain development by reducing the amount of carbohydrates. Heat stress adversely affects tomato growth, limits nutrient availability, hammers photosynthesis, disrupts reproduction, denatures proteins, upsets signaling pathways, and damages cell membranes. The overproduction of reactive oxygen species in response to heat stress is toxic to tomato plants.",
+      "causal_pairs": [
+        {
+          "pair_id": "DOC-003-G01",
+          "cause_event": {
+            "text": "Heat stress adversely affects tomato growth",
+            "type": "CAUSE_EVENT",
+            "concept": "高温胁迫"
+          },
+          "effect_event": {
+            "text": "upsets signaling pathways",
+            "type": "EFFECT_EVENT",
+            "concept": "激素失衡"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.9,
+          "evidence": "upsets signaling pathways",
+          "evidence_source": "DOC-003",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-003-G02",
+          "cause_event": {
+            "text": "Heat stress distorts pollen grain development by reducing the amount of carbohydrates",
+            "type": "CAUSE_EVENT",
+            "concept": "高温胁迫"
+          },
+          "effect_event": {
+            "text": "reducing the amount of carbohydrates",
+            "type": "EFFECT_EVENT",
+            "concept": "碳水化合物减少"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "by reducing the amount of carbohydrates",
+          "evidence_source": "DOC-003",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-003-G03",
+          "cause_event": {
+            "text": "reducing the amount of carbohydrates",
+            "type": "CAUSE_EVENT",
+            "concept": "碳水化合物减少"
+          },
+          "effect_event": {
+            "text": "Heat stress distorts pollen grain development",
+            "type": "EFFECT_EVENT",
+            "concept": "花粉发育异常"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "Heat stress distorts pollen grain development by reducing the amount of carbohydrates",
+          "evidence_source": "DOC-003",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-003-G04",
+          "cause_event": {
+            "text": "Heat stress adversely affects tomato growth",
+            "type": "CAUSE_EVENT",
+            "concept": "高温胁迫"
+          },
+          "effect_event": {
+            "text": "limits nutrient availability",
+            "type": "EFFECT_EVENT",
+            "concept": "养分分配失衡"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.9,
+          "evidence": "limits nutrient availability",
+          "evidence_source": "DOC-003",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-003-G05",
+          "cause_event": {
+            "text": "Heat stress adversely affects tomato growth",
+            "type": "CAUSE_EVENT",
+            "concept": "高温胁迫"
+          },
+          "effect_event": {
+            "text": "disrupts reproduction",
+            "type": "EFFECT_EVENT",
+            "concept": "生殖器官受损"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "disrupts reproduction",
+          "evidence_source": "DOC-003",
+          "source": "active_learning",
+          "verified": true
+        }
+      ],
+      "causal_chains": []
+    },
+    {
+      "doc_id": "DOC-004",
+      "domain": "水稻",
+      "title": "Adverse effects of heat shock in rice and approaches to mitigate it",
+      "source": {
+        "type": "同行评审期刊综述",
+        "publisher": "Elsevier Heliyon",
+        "author": "M.M. Hossain, S. Ahmed, M.S. Alam, A. Hossain",
+        "year": 2024,
+        "doi": "10.1016/j.heliyon.2024.e41072",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11681873/",
+        "publication": "Heliyon 10 (2024) e41072"
+      },
+      "text": "During the reproductive phase of rice, the anthesis stage is the most susceptible to heat shock, followed by microgametogenesis. Temperatures above 35℃ for approximately five days during anthesis can induce high spikelet sterility in rice and failure to produce seeds. Heat shock also leads to substantial reductions in pollen tube diameter and length, resulting in impaired pollen grain germination. Heat shock negatively affects important agronomic traits, such as panicle differentiation, pollen viability, fertilization, grain filling, and, ultimately, grain quality. For every 1℃ increase in the global mean temperature, the yields of rice, maize, wheat, and soybean are projected to decrease by 3.2, 7.4, 6.0 and 3.1 %, respectively.",
+      "causal_pairs": [
+        {
+          "pair_id": "DOC-004-G01",
+          "cause_event": {
+            "text": "high spikelet sterility in rice",
+            "type": "CAUSE_EVENT",
+            "concept": "颖花不育"
+          },
+          "effect_event": {
+            "text": "failure to produce seeds",
+            "type": "EFFECT_EVENT",
+            "concept": "结实不良"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "high spikelet sterility in rice and failure to produce seeds",
+          "evidence_source": "DOC-004",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-004-G02",
+          "cause_event": {
+            "text": "Heat shock",
+            "type": "CAUSE_EVENT",
+            "concept": "高温胁迫"
+          },
+          "effect_event": {
+            "text": "grain quality",
+            "type": "EFFECT_EVENT",
+            "concept": "稻米品质下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.825,
+          "evidence": "Heat shock negatively affects important agronomic traits, such as grain quality",
+          "evidence_source": "DOC-004",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-004-G03",
+          "cause_event": {
+            "text": "Temperatures above 35℃ for approximately five days during anthesis",
+            "type": "CAUSE_EVENT",
+            "concept": "花期高温胁迫"
+          },
+          "effect_event": {
+            "text": "substantial reductions in pollen tube diameter and length",
+            "type": "EFFECT_EVENT",
+            "concept": "花粉管发育异常"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "Heat shock also leads to substantial reductions in pollen tube diameter and length",
+          "evidence_source": "DOC-004",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-004-G04",
+          "cause_event": {
+            "text": "Heat shock",
+            "type": "CAUSE_EVENT",
+            "concept": "高温胁迫"
+          },
+          "effect_event": {
+            "text": "panicle differentiation",
+            "type": "EFFECT_EVENT",
+            "concept": "幼穗分化受阻"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "Heat shock negatively affects important agronomic traits, such as panicle differentiation",
+          "evidence_source": "DOC-004",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-004-G05",
+          "cause_event": {
+            "text": "Heat shock",
+            "type": "CAUSE_EVENT",
+            "concept": "高温胁迫"
+          },
+          "effect_event": {
+            "text": "fertilization",
+            "type": "EFFECT_EVENT",
+            "concept": "授粉受精障碍"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.825,
+          "evidence": "Heat shock negatively affects important agronomic traits, such as fertilization",
+          "evidence_source": "DOC-004",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-004-G06",
+          "cause_event": {
+            "text": "花期高温胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "花期高温胁迫"
+          },
+          "effect_event": {
+            "text": "授粉受精障碍",
+            "type": "EFFECT_EVENT",
+            "concept": "授粉受精障碍"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.88,
+          "evidence": "知识库已知因果(strength=0.88)",
+          "evidence_source": "DOC-004",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-004-G07",
+          "cause_event": {
+            "text": "花期高温胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "花期高温胁迫"
+          },
+          "effect_event": {
+            "text": "产量下降",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.88,
+          "evidence": "知识库已知因果(strength=0.88)",
+          "evidence_source": "DOC-004",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-004-G08",
+          "cause_event": {
+            "text": "花粉萌发障碍",
+            "type": "CAUSE_EVENT",
+            "concept": "花粉萌发障碍"
+          },
+          "effect_event": {
+            "text": "授粉受精障碍",
+            "type": "EFFECT_EVENT",
+            "concept": "授粉受精障碍"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-004",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-004-G09",
+          "cause_event": {
+            "text": "授粉受精障碍",
+            "type": "CAUSE_EVENT",
+            "concept": "授粉受精障碍"
+          },
+          "effect_event": {
+            "text": "颖花不育",
+            "type": "EFFECT_EVENT",
+            "concept": "颖花不育"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-004",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-004-G10",
+          "cause_event": {
+            "text": "花粉活力下降",
+            "type": "CAUSE_EVENT",
+            "concept": "花粉活力下降"
+          },
+          "effect_event": {
+            "text": "灌浆不良",
+            "type": "EFFECT_EVENT",
+            "concept": "灌浆不良"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-004",
+          "source": "active_learning",
+          "verified": true
+        }
+      ],
+      "causal_chains": []
+    },
+    {
+      "doc_id": "DOC-005",
+      "domain": "水稻",
+      "title": "高温热害对水稻产量的影响及防治措施",
+      "source": {
+        "type": "农业科普资料",
+        "publisher": "种业江湖 (综合长江中下游水稻高温热害田间研究)",
+        "year": 2024,
+        "url": "http://m.toutiao.com/group/7657452725533295119/"
+      },
+      "text": "水稻开花授粉期日最高气温连续≥3天达35℃以上即构成花期高温热害。高温破坏绒毡层→花药不开裂或开裂少→花粉无法散落柱头→受精失败→空壳率增加10%~30%+。高温使开花历期缩短、午前开花比例下降，错过适宜温湿窗口。灌浆期高温加速叶片衰老、缩短灌浆持续时间，千粒重降2~5克，垩白度增加。抽穗开花期遇重度高温（≥35℃持续3~5天）减产10%~30%，严重时可达40%。",
+      "causal_pairs": [
+        {
+          "pair_id": "DOC-005-G01",
+          "cause_event": {
+            "text": "灌浆期高温",
+            "type": "CAUSE_EVENT",
+            "concept": "灌浆期高温"
+          },
+          "effect_event": {
+            "text": "垩白度增加",
+            "type": "EFFECT_EVENT",
+            "concept": "垩白度上升"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "垩白度增加",
+          "evidence_source": "DOC-005",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-005-G02",
+          "cause_event": {
+            "text": "水稻开花授粉期日最高气温连续≥3天达35℃以上",
+            "type": "CAUSE_EVENT",
+            "concept": "花期高温胁迫"
+          },
+          "effect_event": {
+            "text": "高温破坏绒毡层",
+            "type": "EFFECT_EVENT",
+            "concept": "生殖器官受损"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "高温破坏绒毡层",
+          "evidence_source": "DOC-005",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-005-G03",
+          "cause_event": {
+            "text": "高温破坏绒毡层",
+            "type": "CAUSE_EVENT",
+            "concept": "生殖器官受损"
+          },
+          "effect_event": {
+            "text": "花药不开裂或开裂少",
+            "type": "EFFECT_EVENT",
+            "concept": "花药开裂受阻"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "高温破坏绒毡层→花药不开裂或开裂少",
+          "evidence_source": "DOC-005",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-005-G04",
+          "cause_event": {
+            "text": "高温使开花历期缩短",
+            "type": "CAUSE_EVENT",
+            "concept": "高温胁迫"
+          },
+          "effect_event": {
+            "text": "午前开花比例下降",
+            "type": "EFFECT_EVENT",
+            "concept": "授粉受精障碍"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.875,
+          "evidence": "高温使开花历期缩短、午前开花比例下降",
+          "evidence_source": "DOC-005",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-005-G05",
+          "cause_event": {
+            "text": "灌浆期高温加速叶片衰老",
+            "type": "CAUSE_EVENT",
+            "concept": "叶片早衰"
+          },
+          "effect_event": {
+            "text": "千粒重降2~5克",
+            "type": "EFFECT_EVENT",
+            "concept": "千粒重下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.9,
+          "evidence": "灌浆期高温加速叶片衰老、缩短灌浆持续时间，千粒重降2~5克",
+          "evidence_source": "DOC-005",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-005-G06",
+          "cause_event": {
+            "text": "灌浆期高温",
+            "type": "CAUSE_EVENT",
+            "concept": "灌浆期高温"
+          },
+          "effect_event": {
+            "text": "缩短灌浆持续时间",
+            "type": "EFFECT_EVENT",
+            "concept": "灌浆期缩短"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.94,
+          "evidence": "缩短灌浆持续时间",
+          "evidence_source": "DOC-005",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-005-G07",
+          "cause_event": {
+            "text": "高温胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "高温胁迫"
+          },
+          "effect_event": {
+            "text": "花药开裂受阻",
+            "type": "EFFECT_EVENT",
+            "concept": "花药开裂受阻"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.9,
+          "evidence": "知识库已知因果(strength=0.9)",
+          "evidence_source": "DOC-005",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-005-G08",
+          "cause_event": {
+            "text": "高温胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "高温胁迫"
+          },
+          "effect_event": {
+            "text": "生殖器官受损",
+            "type": "EFFECT_EVENT",
+            "concept": "生殖器官受损"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.88,
+          "evidence": "知识库已知因果(strength=0.88)",
+          "evidence_source": "DOC-005",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-005-G09",
+          "cause_event": {
+            "text": "高温胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "高温胁迫"
+          },
+          "effect_event": {
+            "text": "产量下降",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-005",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-005-G10",
+          "cause_event": {
+            "text": "花期高温胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "花期高温胁迫"
+          },
+          "effect_event": {
+            "text": "授粉受精障碍",
+            "type": "EFFECT_EVENT",
+            "concept": "授粉受精障碍"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.88,
+          "evidence": "知识库已知因果(strength=0.88)",
+          "evidence_source": "DOC-005",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-005-G11",
+          "cause_event": {
+            "text": "花期高温胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "花期高温胁迫"
+          },
+          "effect_event": {
+            "text": "空壳率上升",
+            "type": "EFFECT_EVENT",
+            "concept": "空壳率上升"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-005",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-005-G12",
+          "cause_event": {
+            "text": "生殖器官受损",
+            "type": "CAUSE_EVENT",
+            "concept": "生殖器官受损"
+          },
+          "effect_event": {
+            "text": "授粉受精障碍",
+            "type": "EFFECT_EVENT",
+            "concept": "授粉受精障碍"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.88,
+          "evidence": "知识库已知因果(strength=0.88)",
+          "evidence_source": "DOC-005",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-005-G13",
+          "cause_event": {
+            "text": "千粒重下降",
+            "type": "CAUSE_EVENT",
+            "concept": "千粒重下降"
+          },
+          "effect_event": {
+            "text": "产量下降",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.9,
+          "evidence": "知识库已知因果(strength=0.9)",
+          "evidence_source": "DOC-005",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-005-G14",
+          "cause_event": {
+            "text": "空壳率上升",
+            "type": "CAUSE_EVENT",
+            "concept": "空壳率上升"
+          },
+          "effect_event": {
+            "text": "产量下降",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.9,
+          "evidence": "知识库已知因果(strength=0.9)",
+          "evidence_source": "DOC-005",
+          "source": "active_learning",
+          "verified": true
+        }
+      ],
+      "causal_chains": []
+    },
+    {
+      "doc_id": "DOC-006",
+      "domain": "水稻",
+      "title": "解码水稻抗热开关——访江西省农科院超级水稻研究发展中心曹志斌",
+      "source": {
+        "type": "科研机构访谈",
+        "publisher": "农村百事通 (农百访谈)",
+        "interviewee": "曹志斌 (江西省农业科学院超级水稻研究发展中心副主任)",
+        "year": 2026,
+        "url": "https://m.sohu.com/a/1055815499_121124542/"
+      },
+      "text": "拔节孕穗期温度高于35℃且持续3天以上，抑制幼穗分化，穗粒数减少，穗形变小，颖花退化增多；影响花粉母细胞减数分裂，造成花粉发育不良。抽穗扬花期日最高温度持续高于35℃时，高温使花药壁失水过快，导致花药无法正常开裂散粉，花粉粒活性急剧下降甚至失去授精能力，出现空壳率大幅上升的“花而不实”现象。灌浆结实期温度高于32℃时，加速籽粒灌浆进程，灌浆期缩短，籽粒充实度变差，千粒重降低；影响光合产物向籽粒转运和积累，垩白粒率和垩白度升高，稻米品质下降；植株呼吸作用增强消耗过多干物质，进一步降低千粒重和水稻产量。",
+      "causal_pairs": [
+        {
+          "pair_id": "DOC-006-G01",
+          "cause_event": {
+            "text": "垩白粒率和垩白度升高",
+            "type": "CAUSE_EVENT",
+            "concept": "垩白度上升"
+          },
+          "effect_event": {
+            "text": "稻米品质下降",
+            "type": "EFFECT_EVENT",
+            "concept": "稻米品质下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "垩白粒率和垩白度升高，稻米品质下降",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-006-G02",
+          "cause_event": {
+            "text": "影响光合产物向籽粒转运和积累",
+            "type": "CAUSE_EVENT",
+            "concept": "同化物转运受阻"
+          },
+          "effect_event": {
+            "text": "垩白粒率和垩白度升高",
+            "type": "EFFECT_EVENT",
+            "concept": "垩白度上升"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "影响光合产物向籽粒转运和积累，垩白粒率和垩白度升高",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-006-G03",
+          "cause_event": {
+            "text": "抽穗扬花期日最高温度持续高于35℃",
+            "type": "CAUSE_EVENT",
+            "concept": "花期高温胁迫"
+          },
+          "effect_event": {
+            "text": "花粉粒活性急剧下降",
+            "type": "EFFECT_EVENT",
+            "concept": "花粉活力下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "花粉粒活性急剧下降",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-006-G04",
+          "cause_event": {
+            "text": "花粉粒活性急剧下降",
+            "type": "CAUSE_EVENT",
+            "concept": "花粉活力下降"
+          },
+          "effect_event": {
+            "text": "失去授精能力",
+            "type": "EFFECT_EVENT",
+            "concept": "授粉受精障碍"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "花粉粒活性急剧下降甚至失去授精能力",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-006-G05",
+          "cause_event": {
+            "text": "加速籽粒灌浆进程",
+            "type": "CAUSE_EVENT",
+            "concept": "灌浆不良"
+          },
+          "effect_event": {
+            "text": "灌浆期缩短",
+            "type": "EFFECT_EVENT",
+            "concept": "灌浆期缩短"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "加速籽粒灌浆进程，灌浆期缩短",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-006-G06",
+          "cause_event": {
+            "text": "灌浆期缩短",
+            "type": "CAUSE_EVENT",
+            "concept": "灌浆期缩短"
+          },
+          "effect_event": {
+            "text": "籽粒充实度变差",
+            "type": "EFFECT_EVENT",
+            "concept": "灌浆不良"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "灌浆期缩短，籽粒充实度变差",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-006-G07",
+          "cause_event": {
+            "text": "消耗过多干物质",
+            "type": "CAUSE_EVENT",
+            "concept": "干物质积累减少"
+          },
+          "effect_event": {
+            "text": "千粒重降低",
+            "type": "EFFECT_EVENT",
+            "concept": "千粒重下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "进一步降低千粒重",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-006-G08",
+          "cause_event": {
+            "text": "失去授精能力",
+            "type": "CAUSE_EVENT",
+            "concept": "授粉受精障碍"
+          },
+          "effect_event": {
+            "text": "空壳率大幅上升",
+            "type": "EFFECT_EVENT",
+            "concept": "空壳率上升"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.96,
+          "evidence": "出现空壳率大幅上升的“花而不实”现象",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-006-G09",
+          "cause_event": {
+            "text": "灌浆结实期温度高于32℃",
+            "type": "CAUSE_EVENT",
+            "concept": "灌浆期高温"
+          },
+          "effect_event": {
+            "text": "加速籽粒灌浆进程",
+            "type": "EFFECT_EVENT",
+            "concept": "灌浆不良"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.94,
+          "evidence": "加速籽粒灌浆进程",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-006-G10",
+          "cause_event": {
+            "text": "籽粒充实度变差",
+            "type": "CAUSE_EVENT",
+            "concept": "灌浆不良"
+          },
+          "effect_event": {
+            "text": "千粒重降低",
+            "type": "EFFECT_EVENT",
+            "concept": "千粒重下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "籽粒充实度变差，千粒重降低",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-006-G11",
+          "cause_event": {
+            "text": "植株呼吸作用增强",
+            "type": "CAUSE_EVENT",
+            "concept": "呼吸消耗增加"
+          },
+          "effect_event": {
+            "text": "消耗过多干物质",
+            "type": "EFFECT_EVENT",
+            "concept": "干物质积累减少"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "植株呼吸作用增强消耗过多干物质",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-006-G12",
+          "cause_event": {
+            "text": "千粒重降低",
+            "type": "CAUSE_EVENT",
+            "concept": "千粒重下降"
+          },
+          "effect_event": {
+            "text": "水稻产量下降",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "进一步降低千粒重和水稻产量",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-006-G13",
+          "cause_event": {
+            "text": "花期高温胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "花期高温胁迫"
+          },
+          "effect_event": {
+            "text": "授粉受精障碍",
+            "type": "EFFECT_EVENT",
+            "concept": "授粉受精障碍"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.88,
+          "evidence": "知识库已知因果(strength=0.88)",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-006-G14",
+          "cause_event": {
+            "text": "花期高温胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "花期高温胁迫"
+          },
+          "effect_event": {
+            "text": "空壳率上升",
+            "type": "EFFECT_EVENT",
+            "concept": "空壳率上升"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-006-G15",
+          "cause_event": {
+            "text": "花期高温胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "花期高温胁迫"
+          },
+          "effect_event": {
+            "text": "产量下降",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.88,
+          "evidence": "知识库已知因果(strength=0.88)",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-006-G16",
+          "cause_event": {
+            "text": "孕穗期高温胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "孕穗期高温胁迫"
+          },
+          "effect_event": {
+            "text": "穗粒数减少",
+            "type": "EFFECT_EVENT",
+            "concept": "穗粒数减少"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-006-G17",
+          "cause_event": {
+            "text": "灌浆期高温",
+            "type": "CAUSE_EVENT",
+            "concept": "灌浆期高温"
+          },
+          "effect_event": {
+            "text": "千粒重下降",
+            "type": "EFFECT_EVENT",
+            "concept": "千粒重下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-006-G18",
+          "cause_event": {
+            "text": "灌浆期缩短",
+            "type": "CAUSE_EVENT",
+            "concept": "灌浆期缩短"
+          },
+          "effect_event": {
+            "text": "千粒重下降",
+            "type": "EFFECT_EVENT",
+            "concept": "千粒重下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.88,
+          "evidence": "知识库已知因果(strength=0.88)",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-006-G19",
+          "cause_event": {
+            "text": "空壳率上升",
+            "type": "CAUSE_EVENT",
+            "concept": "空壳率上升"
+          },
+          "effect_event": {
+            "text": "产量下降",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.9,
+          "evidence": "知识库已知因果(strength=0.9)",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-006-G20",
+          "cause_event": {
+            "text": "穗粒数减少",
+            "type": "CAUSE_EVENT",
+            "concept": "穗粒数减少"
+          },
+          "effect_event": {
+            "text": "产量下降",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.88,
+          "evidence": "知识库已知因果(strength=0.88)",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-006-G21",
+          "cause_event": {
+            "text": "同化物转运受阻",
+            "type": "CAUSE_EVENT",
+            "concept": "同化物转运受阻"
+          },
+          "effect_event": {
+            "text": "灌浆不良",
+            "type": "EFFECT_EVENT",
+            "concept": "灌浆不良"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-006-G22",
+          "cause_event": {
+            "text": "干物质积累减少",
+            "type": "CAUSE_EVENT",
+            "concept": "干物质积累减少"
+          },
+          "effect_event": {
+            "text": "产量下降",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-006-G23",
+          "cause_event": {
+            "text": "花粉活力下降",
+            "type": "CAUSE_EVENT",
+            "concept": "花粉活力下降"
+          },
+          "effect_event": {
+            "text": "灌浆不良",
+            "type": "EFFECT_EVENT",
+            "concept": "灌浆不良"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-006",
+          "source": "active_learning",
+          "verified": true
+        }
+      ],
+      "causal_chains": []
+    },
+    {
+      "doc_id": "DOC-007",
+      "domain": "水稻",
+      "title": "Roles of phytohormone changes in the grain yield of rice plants exposed to heat",
+      "source": {
+        "type": "同行评审期刊综述",
+        "publisher": "PeerJ",
+        "author": "Chao Wu, She Tang, Ganghua Li, Shaohua Wang, Shah Fahad, Yanfeng Ding",
+        "affiliation": "Nanjing Agricultural University, College of Agronomy",
+        "year": 2019,
+        "doi": "10.7717/peerj.7792",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6873875/",
+        "publication": "PeerJ 7:e7792"
+      },
+      "text": "Spikelet sterility as a result of heat stress is attributed not only to physiological abnormalities in the reproductive organs during the flowering stage but also to structural and morphological abnormalities in reproductive organs during the panicle-initiation stage. The reduced grain weight of heat-stressed plants is due to a reduction in nonstructural carbohydrates, undeveloped vascular bundles, and a reduction in glume size during the panicle-initiation stage, while a shortened grain-filling duration, reduced grain-filling rate, and decreased grain width contribute to reduced grain weight during the grain-filling stage. The responses of yield traits to heat stress are regulated by phytohormone levels.",
+      "causal_pairs": [
+        {
+          "pair_id": "DOC-007-G01",
+          "cause_event": {
+            "text": "a reduction in glume size during the panicle-initiation stage",
+            "type": "CAUSE_EVENT",
+            "concept": "穗粒发育不良"
+          },
+          "effect_event": {
+            "text": "reduced grain weight",
+            "type": "EFFECT_EVENT",
+            "concept": "千粒重下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "a reduction in glume size during the panicle-initiation stage",
+          "evidence_source": "DOC-007",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-007-G02",
+          "cause_event": {
+            "text": "decreased grain width",
+            "type": "CAUSE_EVENT",
+            "concept": "穗粒发育不良"
+          },
+          "effect_event": {
+            "text": "reduced grain weight",
+            "type": "EFFECT_EVENT",
+            "concept": "千粒重下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "decreased grain width",
+          "evidence_source": "DOC-007",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-007-G03",
+          "cause_event": {
+            "text": "physiological abnormalities in the reproductive organs during the flowering stage",
+            "type": "CAUSE_EVENT",
+            "concept": "生殖器官受损"
+          },
+          "effect_event": {
+            "text": "Spikelet sterility",
+            "type": "EFFECT_EVENT",
+            "concept": "颖花不育"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.94,
+          "evidence": "Spikelet sterility as a result of heat stress is attributed not only to physiological abnormalities",
+          "evidence_source": "DOC-007",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-007-G04",
+          "cause_event": {
+            "text": "structural and morphological abnormalities in reproductive organs during the panicle-initiation stage",
+            "type": "CAUSE_EVENT",
+            "concept": "生殖器官受损"
+          },
+          "effect_event": {
+            "text": "Spikelet sterility",
+            "type": "EFFECT_EVENT",
+            "concept": "颖花不育"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.94,
+          "evidence": "but also to structural and morphological abnormalities in reproductive organs during the panicle-initiation stage",
+          "evidence_source": "DOC-007",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-007-G05",
+          "cause_event": {
+            "text": "a reduction in nonstructural carbohydrates",
+            "type": "CAUSE_EVENT",
+            "concept": "碳水化合物减少"
+          },
+          "effect_event": {
+            "text": "reduced grain weight",
+            "type": "EFFECT_EVENT",
+            "concept": "千粒重下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "The reduced grain weight of heat-stressed plants is due to a reduction in nonstructural carbohydrates",
+          "evidence_source": "DOC-007",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-007-G06",
+          "cause_event": {
+            "text": "undeveloped vascular bundles",
+            "type": "CAUSE_EVENT",
+            "concept": "维管束发育不良"
+          },
+          "effect_event": {
+            "text": "reduced grain weight",
+            "type": "EFFECT_EVENT",
+            "concept": "千粒重下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "undeveloped vascular bundles",
+          "evidence_source": "DOC-007",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-007-G07",
+          "cause_event": {
+            "text": "heat stress",
+            "type": "CAUSE_EVENT",
+            "concept": "高温胁迫"
+          },
+          "effect_event": {
+            "text": "physiological abnormalities in the reproductive organs during the flowering stage",
+            "type": "EFFECT_EVENT",
+            "concept": "生殖器官受损"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "Spikelet sterility as a result of heat stress is attributed not only to physiological abnormalities in the reproductive organs during the flowering stage",
+          "evidence_source": "DOC-007",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-007-G08",
+          "cause_event": {
+            "text": "heat stress",
+            "type": "CAUSE_EVENT",
+            "concept": "高温胁迫"
+          },
+          "effect_event": {
+            "text": "structural and morphological abnormalities in reproductive organs during the panicle-initiation stage",
+            "type": "EFFECT_EVENT",
+            "concept": "生殖器官受损"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "but also to structural and morphological abnormalities in reproductive organs during the panicle-initiation stage",
+          "evidence_source": "DOC-007",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-007-G09",
+          "cause_event": {
+            "text": "a shortened grain-filling duration",
+            "type": "CAUSE_EVENT",
+            "concept": "灌浆期缩短"
+          },
+          "effect_event": {
+            "text": "reduced grain weight",
+            "type": "EFFECT_EVENT",
+            "concept": "千粒重下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "a shortened grain-filling duration",
+          "evidence_source": "DOC-007",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-007-G10",
+          "cause_event": {
+            "text": "reduced grain-filling rate",
+            "type": "CAUSE_EVENT",
+            "concept": "灌浆不良"
+          },
+          "effect_event": {
+            "text": "reduced grain weight",
+            "type": "EFFECT_EVENT",
+            "concept": "千粒重下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "reduced grain-filling rate",
+          "evidence_source": "DOC-007",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-007-G11",
+          "cause_event": {
+            "text": "高温胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "高温胁迫"
+          },
+          "effect_event": {
+            "text": "产量下降",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-007",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-007-G12",
+          "cause_event": {
+            "text": "千粒重下降",
+            "type": "CAUSE_EVENT",
+            "concept": "千粒重下降"
+          },
+          "effect_event": {
+            "text": "产量下降",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.9,
+          "evidence": "知识库已知因果(strength=0.9)",
+          "evidence_source": "DOC-007",
+          "source": "active_learning",
+          "verified": true
+        }
+      ],
+      "causal_chains": []
+    },
+    {
+      "doc_id": "DOC-008",
+      "domain": "小麦",
+      "title": "三夏小课堂：干热风、烂场雨、冰雹应急应对指南",
+      "source": {
+        "type": "科普资料",
+        "publisher": "科普中国 × 中国农学会 (科学审核：刘霞 山东省农业科学院玉米研究所副所长)",
+        "year": 2026,
+        "url": "https://cloud.kepuchina.cn/h5/detail?id=7471385000417939456"
+      },
+      "text": "干热风是“高温、低湿、刮风”凑到一起的灾害天气：日最高温超过32℃，空气相对湿度低于30%，风速每秒2米以上达到干热风标准。小麦灌浆期遇上干热风，叶片水分蒸发太快，光合作用跟不上，籽粒灌浆不足，千粒重下降，严重的能减产10%-20%。麦子看着还是黄的，实则“早熟逼熟”，籽粒秕瘦。",
+      "causal_pairs": [
+        {
+          "pair_id": "DOC-008-G01",
+          "cause_event": {
+            "text": "叶片水分蒸发太快",
+            "type": "CAUSE_EVENT",
+            "concept": "蒸腾过强"
+          },
+          "effect_event": {
+            "text": "光合作用跟不上",
+            "type": "EFFECT_EVENT",
+            "concept": "光合作用下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.9,
+          "evidence": "光合作用跟不上",
+          "evidence_source": "DOC-008",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-008-G02",
+          "cause_event": {
+            "text": "干热风",
+            "type": "CAUSE_EVENT",
+            "concept": "干热风"
+          },
+          "effect_event": {
+            "text": "早熟逼熟",
+            "type": "EFFECT_EVENT",
+            "concept": "高温逼熟"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "小麦灌浆期遇上干热风",
+          "evidence_source": "DOC-008",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-008-G03",
+          "cause_event": {
+            "text": "早熟逼熟",
+            "type": "CAUSE_EVENT",
+            "concept": "高温逼熟"
+          },
+          "effect_event": {
+            "text": "籽粒秕瘦",
+            "type": "EFFECT_EVENT",
+            "concept": "灌浆不良"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.91,
+          "evidence": "籽粒秕瘦",
+          "evidence_source": "DOC-008",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-008-G04",
+          "cause_event": {
+            "text": "干热风",
+            "type": "CAUSE_EVENT",
+            "concept": "干热风"
+          },
+          "effect_event": {
+            "text": "叶片水分蒸发太快",
+            "type": "EFFECT_EVENT",
+            "concept": "蒸腾过强"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "叶片水分蒸发太快",
+          "evidence_source": "DOC-008",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-008-G05",
+          "cause_event": {
+            "text": "干热风",
+            "type": "CAUSE_EVENT",
+            "concept": "干热风"
+          },
+          "effect_event": {
+            "text": "光合作用下降",
+            "type": "EFFECT_EVENT",
+            "concept": "光合作用下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-008",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-008-G06",
+          "cause_event": {
+            "text": "干热风",
+            "type": "CAUSE_EVENT",
+            "concept": "干热风"
+          },
+          "effect_event": {
+            "text": "千粒重下降",
+            "type": "EFFECT_EVENT",
+            "concept": "千粒重下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-008",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-008-G07",
+          "cause_event": {
+            "text": "干热风",
+            "type": "CAUSE_EVENT",
+            "concept": "干热风"
+          },
+          "effect_event": {
+            "text": "灌浆不良",
+            "type": "EFFECT_EVENT",
+            "concept": "灌浆不良"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-008",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-008-G08",
+          "cause_event": {
+            "text": "干热风",
+            "type": "CAUSE_EVENT",
+            "concept": "干热风"
+          },
+          "effect_event": {
+            "text": "产量下降",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.88,
+          "evidence": "知识库已知因果(strength=0.88)",
+          "evidence_source": "DOC-008",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-008-G09",
+          "cause_event": {
+            "text": "光合作用下降",
+            "type": "CAUSE_EVENT",
+            "concept": "光合作用下降"
+          },
+          "effect_event": {
+            "text": "产量下降",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-008",
+          "source": "active_learning",
+          "verified": true
+        }
+      ],
+      "causal_chains": []
+    },
+    {
+      "doc_id": "DOC-009",
+      "domain": "小麦",
+      "title": "小麦进入灌浆关键期 专家支招科学防范干热风",
+      "source": {
+        "type": "新闻报道 (专家访谈)",
+        "publisher": "中国农科新闻网",
+        "interviewee": "王东 (西北农林科技大学农学院教授，陕西省小麦产业技术体系首席专家)",
+        "year": 2026,
+        "url": "https://nyncj.chengde.gov.cn/art/2026/6/17/art_667_1118745.html"
+      },
+      "text": "干热风俗称“火风”，分高温低湿型与雨后青枯型两类。高温低湿型危害机制在于：高温低湿导致叶片蒸腾急剧增强，根系吸水供不应求，水分代谢严重失衡，光合系统过早失活，灌浆过程被迫中断。雨后青枯型：降雨导致土壤孔隙充水、氧气扩散受阻，根系缺氧使吸水能力显著下降；雨后骤晴叶片蒸腾作用迅速增强甚至超过正常水平，造成植株体内水分供需矛盾激化，严重失水，叶片因急性脱水呈青灰色干枯（俗称“青枯”），灌浆过程被迫中断，千粒重和籽粒容重下降。轻度受灾造成5%—10%的减产，严重时减产20%以上。",
+      "causal_pairs": [
+        {
+          "pair_id": "DOC-009-G01",
+          "cause_event": {
+            "text": "降雨",
+            "type": "CAUSE_EVENT",
+            "concept": "土壤过湿"
+          },
+          "effect_event": {
+            "text": "土壤孔隙充水、氧气扩散受阻",
+            "type": "EFFECT_EVENT",
+            "concept": "氧气扩散受阻"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "降雨导致土壤孔隙充水、氧气扩散受阻",
+          "evidence_source": "DOC-009",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-009-G02",
+          "cause_event": {
+            "text": "土壤孔隙充水、氧气扩散受阻",
+            "type": "CAUSE_EVENT",
+            "concept": "氧气扩散受阻"
+          },
+          "effect_event": {
+            "text": "根系缺氧",
+            "type": "EFFECT_EVENT",
+            "concept": "根系缺氧"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.975,
+          "evidence": "土壤孔隙充水、氧气扩散受阻，根系缺氧",
+          "evidence_source": "DOC-009",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-009-G03",
+          "cause_event": {
+            "text": "严重失水",
+            "type": "CAUSE_EVENT",
+            "concept": "水分供需失衡"
+          },
+          "effect_event": {
+            "text": "灌浆过程被迫中断",
+            "type": "EFFECT_EVENT",
+            "concept": "灌浆中断"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.825,
+          "evidence": "严重失水……灌浆过程被迫中断",
+          "evidence_source": "DOC-009",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-009-G04",
+          "cause_event": {
+            "text": "高温低湿",
+            "type": "CAUSE_EVENT",
+            "concept": "高温干热胁迫"
+          },
+          "effect_event": {
+            "text": "叶片蒸腾急剧增强",
+            "type": "EFFECT_EVENT",
+            "concept": "蒸腾过强"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "高温低湿导致叶片蒸腾急剧增强",
+          "evidence_source": "DOC-009",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-009-G05",
+          "cause_event": {
+            "text": "根系缺氧",
+            "type": "CAUSE_EVENT",
+            "concept": "根系缺氧"
+          },
+          "effect_event": {
+            "text": "吸水能力显著下降",
+            "type": "EFFECT_EVENT",
+            "concept": "根系活力下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "根系缺氧使吸水能力显著下降",
+          "evidence_source": "DOC-009",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-009-G06",
+          "cause_event": {
+            "text": "吸水能力显著下降",
+            "type": "CAUSE_EVENT",
+            "concept": "根系活力下降"
+          },
+          "effect_event": {
+            "text": "植株体内水分供需矛盾激化",
+            "type": "EFFECT_EVENT",
+            "concept": "水分供需失衡"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.94,
+          "evidence": "根系缺氧使吸水能力显著下降；雨后骤晴叶片蒸腾作用迅速增强甚至超过正常水平，造成植株体内水分供需矛盾激化",
+          "evidence_source": "DOC-009",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-009-G07",
+          "cause_event": {
+            "text": "千粒重和籽粒容重下降",
+            "type": "CAUSE_EVENT",
+            "concept": "千粒重下降"
+          },
+          "effect_event": {
+            "text": "减产",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.94,
+          "evidence": "千粒重和籽粒容重下降。轻度受灾造成5%—10%的减产",
+          "evidence_source": "DOC-009",
+          "source": "active_learning",
+          "verified": true
+        }
+      ],
+      "causal_chains": []
+    },
+    {
+      "doc_id": "DOC-010",
+      "domain": "小麦",
+      "title": "中国小麦干热风灾害研究进展",
+      "source": {
+        "type": "同行评审期刊综述",
+        "publisher": "应用气象学报",
+        "author": "霍治国, 尚莹, 邬定荣, 等",
+        "affiliation": "中国气象科学研究院",
+        "year": 2019,
+        "doi": "10.11898/1001-7313.20190201",
+        "url": "http://qikan.camscma.cn/article/doi/10.11898/1001-7313.20190201",
+        "publication": "应用气象学报, 2019, 30(2): 129-141"
+      },
+      "text": "干热风可使小麦蒸腾强度每小时每平方米提高31%（由129g增至168g），光合速率由10.56mg降至3.89mg减少63%。灌浆高峰提前10天以上，日增千粒重最高2g，灌浆时间缩短4-5天，千粒重由37g下降至29.4g。一般年份干热风可使小麦减产1—2成，严重年份减产3成以上。HDW可加剧蒸腾、破坏旗叶、削弱根系活力、缩短生育期、降低干物质积累、叶绿素含量和光合速率。",
+      "causal_pairs": [
+        {
+          "pair_id": "DOC-010-G01",
+          "cause_event": {
+            "text": "千粒重由37g下降至29.4g",
+            "type": "CAUSE_EVENT",
+            "concept": "千粒重下降"
+          },
+          "effect_event": {
+            "text": "小麦减产1—2成",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "一般年份干热风可使小麦减产1—2成",
+          "evidence_source": "DOC-010",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-010-G02",
+          "cause_event": {
+            "text": "干热风",
+            "type": "CAUSE_EVENT",
+            "concept": "干热风"
+          },
+          "effect_event": {
+            "text": "小麦减产1—2成",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "一般年份干热风可使小麦减产1—2成",
+          "evidence_source": "DOC-010",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-010-G03",
+          "cause_event": {
+            "text": "干热风",
+            "type": "CAUSE_EVENT",
+            "concept": "干热风"
+          },
+          "effect_event": {
+            "text": "减产3成以上",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.94,
+          "evidence": "严重年份减产3成以上",
+          "evidence_source": "DOC-010",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-010-G04",
+          "cause_event": {
+            "text": "干热风",
+            "type": "CAUSE_EVENT",
+            "concept": "干热风"
+          },
+          "effect_event": {
+            "text": "千粒重下降",
+            "type": "EFFECT_EVENT",
+            "concept": "千粒重下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-010",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-010-G05",
+          "cause_event": {
+            "text": "光合作用下降",
+            "type": "CAUSE_EVENT",
+            "concept": "光合作用下降"
+          },
+          "effect_event": {
+            "text": "干物质积累减少",
+            "type": "EFFECT_EVENT",
+            "concept": "干物质积累减少"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-010",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-010-G06",
+          "cause_event": {
+            "text": "光合作用下降",
+            "type": "CAUSE_EVENT",
+            "concept": "光合作用下降"
+          },
+          "effect_event": {
+            "text": "产量下降",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-010",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-010-G07",
+          "cause_event": {
+            "text": "干物质积累减少",
+            "type": "CAUSE_EVENT",
+            "concept": "干物质积累减少"
+          },
+          "effect_event": {
+            "text": "产量下降",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-010",
+          "source": "active_learning",
+          "verified": true
+        }
+      ],
+      "causal_chains": []
+    },
+    {
+      "doc_id": "DOC-011",
+      "domain": "茶树",
+      "title": "干旱调控茶树抗病新机制 (Drought-Triggered JA Signaling ... in Tea Plants)",
+      "source": {
+        "type": "同行评审期刊 (高校新闻报道)",
+        "publisher": "安徽农业大学 / Plant Physiology",
+        "author": "唐小燕, 魏臣茹, 等; 通讯作者：宋传奎, 李腾",
+        "affiliation": "安徽农业大学 茶树种质创新与资源利用全国重点实验室",
+        "year": 2026,
+        "url": "https://news.ahau.edu.cn/info/1009/138477.htm",
+        "publication": "Plant Physiology, 2026"
+      },
+      "text": "短期干旱处理可显著增大茶轮斑病病斑面积，增强茶树对病原菌的敏感性。研究鉴定出关键糖基转移酶CsUGT72BV9，可催化4-羟基香豆素的糖基化，进而减少木质素积累。CsUGT72BV9沉默植株的木质素含量显著高于对照，过表达植株木质素含量显著降低。干旱诱导的茉莉酸信号激活转录因子CsMYC2c，可直接结合并促进CsUGT72BV9表达，增强4-羟基香豆素糖基化，从而削弱木质素防御屏障，最终提高茶树对病原菌的易感性。",
+      "causal_pairs": [
+        {
+          "pair_id": "DOC-011-G01",
+          "cause_event": {
+            "text": "短期干旱处理",
+            "type": "CAUSE_EVENT",
+            "concept": "干旱胁迫"
+          },
+          "effect_event": {
+            "text": "茶树对病原菌的敏感性增强",
+            "type": "EFFECT_EVENT",
+            "concept": "感病性增加"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.94,
+          "evidence": "增强茶树对病原菌的敏感性",
+          "evidence_source": "DOC-011",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-011-G02",
+          "cause_event": {
+            "text": "木质素防御屏障削弱",
+            "type": "CAUSE_EVENT",
+            "concept": "木质素防御削弱"
+          },
+          "effect_event": {
+            "text": "茶树对病原菌的易感性提高",
+            "type": "EFFECT_EVENT",
+            "concept": "感病性增加"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "最终提高茶树对病原菌的易感性",
+          "evidence_source": "DOC-011",
+          "source": "active_learning",
+          "verified": true
+        }
+      ],
+      "causal_chains": []
+    },
+    {
+      "doc_id": "DOC-012",
+      "domain": "玉米",
+      "title": "Impact of Drought on Field Crops (干旱对大田作物的影响)",
+      "source": {
+        "type": "农业综述",
+        "publisher": "Agri Magazine (International E-Magazine for Agricultural Articles)",
+        "author": "Aman Mahapatra (Odisha University of Agriculture and Technology)",
+        "year": 2025,
+        "url": "https://agrimagazine.in/wp-content/uploads/2025/07/E-AGM-02-07-94-346-348.pdf",
+        "publication": "Agri Magazine, Vol. 02, Issue 07, July 2025, pp. 346-348"
+      },
+      "text": "干旱胁迫对作物形态发育的影响：种子萌发受抑制、幼苗活力下降；细胞分裂与伸长减缓导致植株矮化；开花期干旱可导致花粉不育、落花与结实不良；灌浆期缩短导致籽粒皱缩、千粒重下降。生理生化响应：气孔关闭减少CO₂吸收导致光合作用下降；ABA水平升高导致气孔关闭与生长抑制；干旱诱导活性氧(ROS)产生，损伤细胞结构。在小麦中干旱减少分蘖数、粒大小与粒重；水稻出现小穗不育和穗长减少；玉米籽粒发育不良、穗变小；大豆结荚数减少、含油量降低；棉花蕾铃脱落、纤维强度下降。",
+      "causal_pairs": [
+        {
+          "pair_id": "DOC-012-G01",
+          "cause_event": {
+            "text": "活性氧(ROS)产生",
+            "type": "CAUSE_EVENT",
+            "concept": "氧化应激"
+          },
+          "effect_event": {
+            "text": "损伤细胞结构",
+            "type": "EFFECT_EVENT",
+            "concept": "细胞结构受损"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "干旱诱导活性氧(ROS)产生，损伤细胞结构",
+          "evidence_source": "DOC-012",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-012-G02",
+          "cause_event": {
+            "text": "干旱胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "干旱胁迫"
+          },
+          "effect_event": {
+            "text": "籽粒发育不良",
+            "type": "EFFECT_EVENT",
+            "concept": "穗粒发育不良"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "玉米籽粒发育不良",
+          "evidence_source": "DOC-012",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-012-G03",
+          "cause_event": {
+            "text": "干旱胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "干旱胁迫"
+          },
+          "effect_event": {
+            "text": "穗变小",
+            "type": "EFFECT_EVENT",
+            "concept": "穗粒发育不良"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "穗变小",
+          "evidence_source": "DOC-012",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-012-G04",
+          "cause_event": {
+            "text": "干旱胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "干旱胁迫"
+          },
+          "effect_event": {
+            "text": "含油量降低",
+            "type": "EFFECT_EVENT",
+            "concept": "稻米品质下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.9,
+          "evidence": "含油量降低",
+          "evidence_source": "DOC-012",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-012-G05",
+          "cause_event": {
+            "text": "干旱胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "干旱胁迫"
+          },
+          "effect_event": {
+            "text": "纤维强度下降",
+            "type": "EFFECT_EVENT",
+            "concept": "稻米品质下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.9,
+          "evidence": "纤维强度下降",
+          "evidence_source": "DOC-012",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-012-G06",
+          "cause_event": {
+            "text": "干旱胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "干旱胁迫"
+          },
+          "effect_event": {
+            "text": "花粉不育",
+            "type": "EFFECT_EVENT",
+            "concept": "花粉不育"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.94,
+          "evidence": "开花期干旱可导致花粉不育",
+          "evidence_source": "DOC-012",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-012-G07",
+          "cause_event": {
+            "text": "花粉不育",
+            "type": "CAUSE_EVENT",
+            "concept": "花粉不育"
+          },
+          "effect_event": {
+            "text": "落花",
+            "type": "EFFECT_EVENT",
+            "concept": "落花落蕾"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "导致花粉不育、落花与结实不良",
+          "evidence_source": "DOC-012",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-012-G08",
+          "cause_event": {
+            "text": "灌浆期缩短",
+            "type": "CAUSE_EVENT",
+            "concept": "灌浆期缩短"
+          },
+          "effect_event": {
+            "text": "籽粒皱缩",
+            "type": "EFFECT_EVENT",
+            "concept": "灌浆不良"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "灌浆期缩短导致籽粒皱缩",
+          "evidence_source": "DOC-012",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-012-G09",
+          "cause_event": {
+            "text": "ABA水平升高",
+            "type": "CAUSE_EVENT",
+            "concept": "ABA升高"
+          },
+          "effect_event": {
+            "text": "生长抑制",
+            "type": "EFFECT_EVENT",
+            "concept": "植株矮化"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "ABA水平升高导致气孔关闭与生长抑制",
+          "evidence_source": "DOC-012",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-012-G10",
+          "cause_event": {
+            "text": "干旱胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "干旱胁迫"
+          },
+          "effect_event": {
+            "text": "分蘖数减少",
+            "type": "EFFECT_EVENT",
+            "concept": "穗粒数减少"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "在小麦中干旱减少分蘖数",
+          "evidence_source": "DOC-012",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-012-G11",
+          "cause_event": {
+            "text": "干旱胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "干旱胁迫"
+          },
+          "effect_event": {
+            "text": "粒大小与粒重减少",
+            "type": "EFFECT_EVENT",
+            "concept": "千粒重下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.825,
+          "evidence": "粒大小与粒重减少",
+          "evidence_source": "DOC-012",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-012-G12",
+          "cause_event": {
+            "text": "干旱胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "干旱胁迫"
+          },
+          "effect_event": {
+            "text": "小穗不育",
+            "type": "EFFECT_EVENT",
+            "concept": "穗粒数减少"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "水稻出现小穗不育",
+          "evidence_source": "DOC-012",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-012-G13",
+          "cause_event": {
+            "text": "干旱胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "干旱胁迫"
+          },
+          "effect_event": {
+            "text": "穗长减少",
+            "type": "EFFECT_EVENT",
+            "concept": "穗粒数减少"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "穗长减少",
+          "evidence_source": "DOC-012",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-012-G14",
+          "cause_event": {
+            "text": "干旱胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "干旱胁迫"
+          },
+          "effect_event": {
+            "text": "蕾铃脱落",
+            "type": "EFFECT_EVENT",
+            "concept": "落花落蕾"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "棉花蕾铃脱落",
+          "evidence_source": "DOC-012",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-012-G15",
+          "cause_event": {
+            "text": "灌浆期缩短",
+            "type": "CAUSE_EVENT",
+            "concept": "灌浆期缩短"
+          },
+          "effect_event": {
+            "text": "千粒重下降",
+            "type": "EFFECT_EVENT",
+            "concept": "千粒重下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "灌浆期缩短导致籽粒皱缩、千粒重下降",
+          "evidence_source": "DOC-012",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-012-G16",
+          "cause_event": {
+            "text": "干旱胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "干旱胁迫"
+          },
+          "effect_event": {
+            "text": "光合作用下降",
+            "type": "EFFECT_EVENT",
+            "concept": "光合作用下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-012",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-012-G17",
+          "cause_event": {
+            "text": "光合作用下降",
+            "type": "CAUSE_EVENT",
+            "concept": "光合作用下降"
+          },
+          "effect_event": {
+            "text": "灌浆不良",
+            "type": "EFFECT_EVENT",
+            "concept": "灌浆不良"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-012",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-012-G18",
+          "cause_event": {
+            "text": "灌浆不良",
+            "type": "CAUSE_EVENT",
+            "concept": "灌浆不良"
+          },
+          "effect_event": {
+            "text": "千粒重下降",
+            "type": "EFFECT_EVENT",
+            "concept": "千粒重下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.88,
+          "evidence": "知识库已知因果(strength=0.88)",
+          "evidence_source": "DOC-012",
+          "source": "active_learning",
+          "verified": true
+        }
+      ],
+      "causal_chains": []
+    },
+    {
+      "doc_id": "DOC-013",
+      "domain": "水稻",
+      "title": "水稻颖壳张开不灌浆发生原因及综合防控技术",
+      "source": {
+        "type": "农业技术资料",
+        "publisher": "种业江湖 (综合田间观察)",
+        "year": 2024,
+        "url": "http://m.toutiao.com/group/7669329471782093346/"
+      },
+      "text": "水稻孕穗后期、抽穗扬花期连续最高温≥35℃空气干燥时，花粉失水失活、花药不能正常开裂，授粉失败；颖花开放后无法完成受精，颖壳持续张开不闭合、不灌浆。扬花期气温持续低于17~20℃，花粉发育受阻、花粉管伸长停滞，受精障碍，形成大量张开空壳。氮肥过量施用偏迟，植株徒长茎叶旺长，养分争夺穗部营养，花粉发育不良，后期贪青，灌浆动力不足。缺硼造成颖花畸形、授粉障碍；缺锌降低光合作用；缺硅使颖壳韧性不足闭合困难。钾肥不足，根系早衰，灌浆通路受阻，秕谷增多。",
+      "causal_pairs": [
+        {
+          "pair_id": "DOC-013-G01",
+          "cause_event": {
+            "text": "连续最高温≥35℃空气干燥",
+            "type": "CAUSE_EVENT",
+            "concept": "高温低湿型干热风"
+          },
+          "effect_event": {
+            "text": "花粉失水失活",
+            "type": "EFFECT_EVENT",
+            "concept": "花粉活力下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.965,
+          "evidence": "连续最高温≥35℃空气干燥时，花粉失水失活",
+          "evidence_source": "DOC-013",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-013-G02",
+          "cause_event": {
+            "text": "连续最高温≥35℃空气干燥",
+            "type": "CAUSE_EVENT",
+            "concept": "高温低湿型干热风"
+          },
+          "effect_event": {
+            "text": "花药不能正常开裂",
+            "type": "EFFECT_EVENT",
+            "concept": "花药开裂受阻"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "花药不能正常开裂",
+          "evidence_source": "DOC-013",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-013-G03",
+          "cause_event": {
+            "text": "缺硼",
+            "type": "CAUSE_EVENT",
+            "concept": "缺素症"
+          },
+          "effect_event": {
+            "text": "颖花畸形",
+            "type": "EFFECT_EVENT",
+            "concept": "颖花不育"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "缺硼造成颖花畸形",
+          "evidence_source": "DOC-013",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-013-G04",
+          "cause_event": {
+            "text": "缺硅",
+            "type": "CAUSE_EVENT",
+            "concept": "缺素症"
+          },
+          "effect_event": {
+            "text": "颖壳韧性不足闭合困难",
+            "type": "EFFECT_EVENT",
+            "concept": "颖花不育"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "缺硅使颖壳韧性不足闭合困难",
+          "evidence_source": "DOC-013",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-013-G05",
+          "cause_event": {
+            "text": "根系早衰",
+            "type": "CAUSE_EVENT",
+            "concept": "根系早衰"
+          },
+          "effect_event": {
+            "text": "灌浆通路受阻",
+            "type": "EFFECT_EVENT",
+            "concept": "同化物转运受阻"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.94,
+          "evidence": "灌浆通路受阻",
+          "evidence_source": "DOC-013",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-013-G06",
+          "cause_event": {
+            "text": "花粉失水失活",
+            "type": "CAUSE_EVENT",
+            "concept": "花粉活力下降"
+          },
+          "effect_event": {
+            "text": "授粉失败",
+            "type": "EFFECT_EVENT",
+            "concept": "授粉失败"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "授粉失败",
+          "evidence_source": "DOC-013",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-013-G07",
+          "cause_event": {
+            "text": "无法完成受精",
+            "type": "CAUSE_EVENT",
+            "concept": "授粉受精障碍"
+          },
+          "effect_event": {
+            "text": "不灌浆",
+            "type": "EFFECT_EVENT",
+            "concept": "灌浆不良"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "不灌浆",
+          "evidence_source": "DOC-013",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-013-G08",
+          "cause_event": {
+            "text": "气温持续低于17~20℃",
+            "type": "CAUSE_EVENT",
+            "concept": "低温冷害"
+          },
+          "effect_event": {
+            "text": "花粉发育受阻",
+            "type": "EFFECT_EVENT",
+            "concept": "花粉发育异常"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.96,
+          "evidence": "花粉发育受阻",
+          "evidence_source": "DOC-013",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-013-G09",
+          "cause_event": {
+            "text": "花粉发育受阻",
+            "type": "CAUSE_EVENT",
+            "concept": "花粉发育异常"
+          },
+          "effect_event": {
+            "text": "受精障碍",
+            "type": "EFFECT_EVENT",
+            "concept": "授粉受精障碍"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.94,
+          "evidence": "受精障碍",
+          "evidence_source": "DOC-013",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-013-G10",
+          "cause_event": {
+            "text": "后期贪青",
+            "type": "CAUSE_EVENT",
+            "concept": "植株徒长"
+          },
+          "effect_event": {
+            "text": "灌浆动力不足",
+            "type": "EFFECT_EVENT",
+            "concept": "灌浆不良"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "灌浆动力不足",
+          "evidence_source": "DOC-013",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-013-G11",
+          "cause_event": {
+            "text": "花药不能正常开裂",
+            "type": "CAUSE_EVENT",
+            "concept": "花药开裂受阻"
+          },
+          "effect_event": {
+            "text": "授粉失败",
+            "type": "EFFECT_EVENT",
+            "concept": "授粉失败"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.94,
+          "evidence": "授粉失败",
+          "evidence_source": "DOC-013",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-013-G12",
+          "cause_event": {
+            "text": "花粉管伸长停滞",
+            "type": "CAUSE_EVENT",
+            "concept": "花粉管伸长受阻"
+          },
+          "effect_event": {
+            "text": "受精障碍",
+            "type": "EFFECT_EVENT",
+            "concept": "授粉受精障碍"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.94,
+          "evidence": "受精障碍",
+          "evidence_source": "DOC-013",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-013-G13",
+          "cause_event": {
+            "text": "灌浆通路受阻",
+            "type": "CAUSE_EVENT",
+            "concept": "同化物转运受阻"
+          },
+          "effect_event": {
+            "text": "秕谷增多",
+            "type": "EFFECT_EVENT",
+            "concept": "灌浆不良"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "秕谷增多",
+          "evidence_source": "DOC-013",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-013-G14",
+          "cause_event": {
+            "text": "授粉受精障碍",
+            "type": "CAUSE_EVENT",
+            "concept": "授粉受精障碍"
+          },
+          "effect_event": {
+            "text": "颖花不育",
+            "type": "EFFECT_EVENT",
+            "concept": "颖花不育"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-013",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-013-G15",
+          "cause_event": {
+            "text": "光合作用下降",
+            "type": "CAUSE_EVENT",
+            "concept": "光合作用下降"
+          },
+          "effect_event": {
+            "text": "灌浆不良",
+            "type": "EFFECT_EVENT",
+            "concept": "灌浆不良"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-013",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-013-G16",
+          "cause_event": {
+            "text": "颖花不育",
+            "type": "CAUSE_EVENT",
+            "concept": "颖花不育"
+          },
+          "effect_event": {
+            "text": "空壳率上升",
+            "type": "EFFECT_EVENT",
+            "concept": "空壳率上升"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.88,
+          "evidence": "知识库已知因果(strength=0.88)",
+          "evidence_source": "DOC-013",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-013-G17",
+          "cause_event": {
+            "text": "花粉活力下降",
+            "type": "CAUSE_EVENT",
+            "concept": "花粉活力下降"
+          },
+          "effect_event": {
+            "text": "灌浆不良",
+            "type": "EFFECT_EVENT",
+            "concept": "灌浆不良"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-013",
+          "source": "active_learning",
+          "verified": true
+        }
+      ],
+      "causal_chains": []
+    },
+    {
+      "doc_id": "DOC-014",
+      "domain": "玉米",
+      "title": "Arbuscular Mycorrhizal Fungi Mitigate Drought-Enhanced Herbivore Performance in Maize",
+      "source": {
+        "type": "同行评审期刊",
+        "publisher": "Plant, Cell & Environment (Wiley)",
+        "author": "S.A. Khan, G.E. Capella, G. Glauser, P. Mateo, V. Ogi, M. van der Heijden, N. Bodenhausen, C. Robert",
+        "affiliation": "University of Bern, Institute of Plant Sciences",
+        "year": 2026,
+        "doi": "10.1111/pce.70357",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12976586/",
+        "publication": "Plant Cell Environ. 2026 Jan 7;49(4):2080–2094"
+      },
+      "text": "干旱事件日益频繁和强烈，对作物生产力构成重大挑战。除直接水分胁迫外，干旱还可通过增强植食性害虫的表现间接影响植物。丛枝菌根真菌(AMF)被认为可缓解干旱胁迫并增强植物对虫害的抗性。干旱触发玉米叶片中苯并噁唑嗪类化合物(Benzoxazinoids)的瞬时变化，第60天DIMBOA-Glc水平下降而DIM2BOA-Glc水平上升。干旱增强了植食性害虫的表现，而AMF定殖可缓解这种效应。",
+      "causal_pairs": [
+        {
+          "pair_id": "DOC-014-G01",
+          "cause_event": {
+            "text": "增强植食性害虫的表现",
+            "type": "CAUSE_EVENT",
+            "concept": "虫害"
+          },
+          "effect_event": {
+            "text": "直接水分胁迫",
+            "type": "EFFECT_EVENT",
+            "concept": "水分亏缺"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "除直接水分胁迫外，干旱还可通过增强植食性害虫的表现间接影响植物",
+          "evidence_source": "DOC-014",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-014-G02",
+          "cause_event": {
+            "text": "干旱增强了植食性害虫的表现",
+            "type": "CAUSE_EVENT",
+            "concept": "虫害"
+          },
+          "effect_event": {
+            "text": "AMF定殖可缓解这种效应",
+            "type": "EFFECT_EVENT",
+            "concept": "虫害减轻"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.91,
+          "evidence": "干旱增强了植食性害虫的表现，而AMF定殖可缓解这种效应",
+          "evidence_source": "DOC-014",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-014-G03",
+          "cause_event": {
+            "text": "增强植食性害虫的表现",
+            "type": "CAUSE_EVENT",
+            "concept": "虫害"
+          },
+          "effect_event": {
+            "text": "间接影响植物",
+            "type": "EFFECT_EVENT",
+            "concept": "感病性增加"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.9,
+          "evidence": "干旱还可通过增强植食性害虫的表现间接影响植物",
+          "evidence_source": "DOC-014",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-014-G04",
+          "cause_event": {
+            "text": "干旱事件日益频繁和强烈",
+            "type": "CAUSE_EVENT",
+            "concept": "干旱胁迫"
+          },
+          "effect_event": {
+            "text": "对作物生产力构成重大挑战",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "干旱事件日益频繁和强烈，对作物生产力构成重大挑战",
+          "evidence_source": "DOC-014",
+          "source": "active_learning",
+          "verified": true
+        }
+      ],
+      "causal_chains": []
+    },
+    {
+      "doc_id": "DOC-015",
+      "domain": "玉米",
+      "title": "Pseudomonas spp. as bioinoculants for integrated management of drought and Fusarium stress in maize",
+      "source": {
+        "type": "同行评审期刊综述",
+        "publisher": "Planta (Springer)",
+        "author": "K. Ndlazi, S. Ntshalintshali, L. Buthelezi, A. Klein, M. Keyster, M. Nkomo, A. Gokul",
+        "year": 2026,
+        "doi": "10.1007/s00425-025-04906-8",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12852290/",
+        "publication": "Planta. 2026 Jan 28;263(3):58"
+      },
+      "text": "干旱限制水分可用性、破坏养分吸收、减缓光合作用，同时使植物更易感病。轮枝菌(Fusarium verticillioides)侵染植物组织、污染籽粒产生伏马毒素，并进一步加剧水分胁迫。干旱与轮枝菌常同时发生，复合损害加剧。植物防御机制包括合成病程相关蛋白(PR蛋白)如β-1,3-葡聚糖酶和几丁质酶降解真菌细胞壁，以及产生酚类化合物和植保素。茉莉酸(JA)和乙烯途径通常与对坏死营养型病原体的抗性相关。",
+      "causal_pairs": [
+        {
+          "pair_id": "DOC-015-G01",
+          "cause_event": {
+            "text": "复合损害加剧",
+            "type": "CAUSE_EVENT",
+            "concept": "复合胁迫"
+          },
+          "effect_event": {
+            "text": "干旱限制水分可用性",
+            "type": "EFFECT_EVENT",
+            "concept": "水分亏缺"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.755,
+          "evidence": "干旱与轮枝菌常同时发生，复合损害加剧",
+          "evidence_source": "DOC-015",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-015-G02",
+          "cause_event": {
+            "text": "干旱限制水分可用性",
+            "type": "CAUSE_EVENT",
+            "concept": "水分亏缺"
+          },
+          "effect_event": {
+            "text": "破坏养分吸收",
+            "type": "EFFECT_EVENT",
+            "concept": "养分分配失衡"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "干旱限制水分可用性、破坏养分吸收",
+          "evidence_source": "DOC-015",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-015-G03",
+          "cause_event": {
+            "text": "干旱限制水分可用性",
+            "type": "CAUSE_EVENT",
+            "concept": "水分亏缺"
+          },
+          "effect_event": {
+            "text": "减缓光合作用",
+            "type": "EFFECT_EVENT",
+            "concept": "光合作用下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.84,
+          "evidence": "干旱限制水分可用性、减缓光合作用",
+          "evidence_source": "DOC-015",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-015-G04",
+          "cause_event": {
+            "text": "干旱限制水分可用性",
+            "type": "CAUSE_EVENT",
+            "concept": "水分亏缺"
+          },
+          "effect_event": {
+            "text": "使植物更易感病",
+            "type": "EFFECT_EVENT",
+            "concept": "感病性增加"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.91,
+          "evidence": "同时使植物更易感病",
+          "evidence_source": "DOC-015",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-015-G05",
+          "cause_event": {
+            "text": "轮枝菌侵染植物组织",
+            "type": "CAUSE_EVENT",
+            "concept": "病原菌侵染"
+          },
+          "effect_event": {
+            "text": "进一步加剧水分胁迫",
+            "type": "EFFECT_EVENT",
+            "concept": "水分亏缺"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.805,
+          "evidence": "并进一步加剧水分胁迫",
+          "evidence_source": "DOC-015",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-015-G06",
+          "cause_event": {
+            "text": "复合损害加剧",
+            "type": "CAUSE_EVENT",
+            "concept": "复合胁迫"
+          },
+          "effect_event": {
+            "text": "轮枝菌侵染植物组织",
+            "type": "EFFECT_EVENT",
+            "concept": "病原菌侵染"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.755,
+          "evidence": "干旱与轮枝菌常同时发生，复合损害加剧",
+          "evidence_source": "DOC-015",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-015-G07",
+          "cause_event": {
+            "text": "病原菌侵染",
+            "type": "CAUSE_EVENT",
+            "concept": "病原菌侵染"
+          },
+          "effect_event": {
+            "text": "感病性增加",
+            "type": "EFFECT_EVENT",
+            "concept": "感病性增加"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-015",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-015-G08",
+          "cause_event": {
+            "text": "木质素防御削弱",
+            "type": "CAUSE_EVENT",
+            "concept": "木质素防御削弱"
+          },
+          "effect_event": {
+            "text": "感病性增加",
+            "type": "EFFECT_EVENT",
+            "concept": "感病性增加"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.88,
+          "evidence": "知识库已知因果(strength=0.88)",
+          "evidence_source": "DOC-015",
+          "source": "active_learning",
+          "verified": true
+        }
+      ],
+      "causal_chains": []
+    },
+    {
+      "doc_id": "DOC-016",
+      "domain": "多作物综述",
+      "title": "Integrating ecophysiology and omics to unlock crop response to drought and herbivory stress",
+      "source": {
+        "type": "同行评审期刊观点文章",
+        "publisher": "Frontiers in Plant Science",
+        "author": "Insha Shafi, Manish Gautam, Rupesh Kariyat",
+        "affiliation": "University of Arkansas, Department of Entomology and Plant Pathology",
+        "year": 2024,
+        "doi": "10.3389/fpls.2024.1500773",
+        "url": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2024.1500773/full",
+        "publication": "Front. Plant Sci., 04 November 2024, Volume 15"
+      },
+      "text": "干旱作为主要非生物胁迫，诱导作物一系列形态生理变化，如叶面积减少、气孔关闭、根系生物量与表面积增加。干旱胁迫还可启动植物对后续胁迫事件的引发(priming)效应，影响植物对后续生物与非生物胁迫的敏感性或抗性。干旱诱导的引发可导致基因表达表观遗传变化，形成转录记忆，增强植物对后续干旱事件的存活与响应。在拟南芥中，非生物胁迫诱导脯氨酸生物合成基因P5CS启动子的组蛋白去甲基化，提高P5CS表达和脯氨酸积累，协助耐受胁迫。",
+      "causal_pairs": [
+        {
+          "pair_id": "DOC-016-G01",
+          "cause_event": {
+            "text": "形成转录记忆",
+            "type": "CAUSE_EVENT",
+            "concept": "胁迫记忆形成"
+          },
+          "effect_event": {
+            "text": "增强植物对后续干旱事件的存活与响应",
+            "type": "EFFECT_EVENT",
+            "concept": "抗逆性增强"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.94,
+          "evidence": "增强植物对后续干旱事件的存活与响应",
+          "evidence_source": "DOC-016",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-016-G02",
+          "cause_event": {
+            "text": "脯氨酸积累",
+            "type": "CAUSE_EVENT",
+            "concept": "脯氨酸积累"
+          },
+          "effect_event": {
+            "text": "协助耐受胁迫",
+            "type": "EFFECT_EVENT",
+            "concept": "胁迫记忆形成"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "协助耐受胁迫",
+          "evidence_source": "DOC-016",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-016-G03",
+          "cause_event": {
+            "text": "干旱诱导的引发",
+            "type": "CAUSE_EVENT",
+            "concept": "干旱胁迫"
+          },
+          "effect_event": {
+            "text": "基因表达表观遗传变化",
+            "type": "EFFECT_EVENT",
+            "concept": "表观遗传变化"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.94,
+          "evidence": "干旱诱导的引发可导致基因表达表观遗传变化",
+          "evidence_source": "DOC-016",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-016-G04",
+          "cause_event": {
+            "text": "非生物胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "干旱胁迫"
+          },
+          "effect_event": {
+            "text": "脯氨酸积累",
+            "type": "EFFECT_EVENT",
+            "concept": "脯氨酸积累"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.91,
+          "evidence": "非生物胁迫诱导脯氨酸生物合成基因P5CS启动子的组蛋白去甲基化，提高P5CS表达和脯氨酸积累",
+          "evidence_source": "DOC-016",
+          "source": "active_learning",
+          "verified": true
+        }
+      ],
+      "causal_chains": []
+    },
+    {
+      "doc_id": "DOC-017",
+      "domain": "玉米-盐碱胁迫",
+      "title": "蚯蚓粪和高粱水提物缓解玉米幼苗盐碱胁迫",
+      "source": {
+        "type": "sci_paper",
+        "publisher": "MDPI Plants",
+        "year": 2022,
+        "url": "https://www.mdpi.com/2223-7747/11/19/2548",
+        "doi": "10.3390/plants11192548"
+      },
+      "text": "非生物胁迫是制约全球作物生产力的重要障碍，盐碱化是破坏作物生产最严重的环境因素之一，迫切需要寻找环境安全且可持续的方法以减轻盐碱对作物的有害影响。因此，施用蚯蚓粪与低浓度高粱水提物为缓解盐碱对玉米幼苗的不利后果提供了切实可行的解决方案。试验设置三因素：盐碱梯度（对照、6 dS·m⁻¹、12 dS·m⁻¹）、蚯蚓粪用量（对照、5%、10%）、高粱水提物浓度（对照、1%、2%）。较高的盐碱胁迫对玉米形态与生理性状造成了负面影响；然而，分别施用 10% 蚯蚓粪与 2% 高粱水提物提高了幼苗对盐碱的耐受性。2% 高粱水提物与 10% 蚯蚓粪的配施显著改善了玉米的形态指标、叶绿素含量、抗氧化酶活性以及叶片与根系中的 K⁺/Na⁺ 比值和 K⁺ 含量，并在较高盐碱水平下降低了 Na⁺ 浓度、H₂O₂ 和丙二醛含量。研究表明，土施蚯蚓粪与叶面喷施高粱水提物共同作用，通过激活抗氧化防御系统、提高叶绿素含量并减少盐碱下 Na⁺ 的积累，从而缓解了盐碱对玉米的伤害。",
+      "causal_pairs": [
+        {
+          "pair_id": "DOC-017-G01",
+          "cause_event": {
+            "text": "激活抗氧化防御系统、提高叶绿素含量并减少盐碱下Na⁺的积累",
+            "type": "CAUSE_EVENT",
+            "concept": "氧化应激"
+          },
+          "effect_event": {
+            "text": "缓解了盐碱对玉米的伤害",
+            "type": "EFFECT_EVENT",
+            "concept": "胁迫缓解"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "从而缓解了盐碱对玉米的伤害",
+          "evidence_source": "DOC-017",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-017-PM002",
+          "cause_event": {
+            "text": "施用 10% 蚯蚓粪与 2% 高粱水提物",
+            "type": "CAUSE_EVENT",
+            "concept": "蚯蚓粪",
+            "sub_class_id": "Treatment.Treatment",
+            "entity_class": "UNKNOWN"
+          },
+          "effect_event": {
+            "text": "提高了幼苗对盐碱的耐受性",
+            "type": "EFFECT_EVENT",
+            "concept": "胁迫缓解",
+            "sub_class_id": "FunctionalSymptom.StressResponseSymptom",
+            "entity_class": "UNKNOWN"
+          },
+          "relation_type": "CAUSES",
+          "confidence": 0.93,
+          "evidence": "分别施用 10% 蚯蚓粪与 2% 高粱水提物提高了幼苗对盐碱的耐受性",
+          "evidence_source": "manual-review(y)",
+          "manual_review": "2026-Q3 MDPI-4papers"
+        },
+        {
+          "pair_id": "DOC-017-PM003",
+          "cause_event": {
+            "text": "2% 高粱水提物与 10% 蚯蚓粪的配施",
+            "type": "CAUSE_EVENT",
+            "concept": "有机改良剂",
+            "sub_class_id": "Treatment.Treatment",
+            "entity_class": "UNKNOWN"
+          },
+          "effect_event": {
+            "text": "显著改善了玉米的形态指标、叶绿素含量、抗氧化酶活性以及叶片与根系中的 K+/Na+ 比值和 K+ 含量",
+            "type": "EFFECT_EVENT",
+            "concept": "抗氧化能力提升",
+            "sub_class_id": "FunctionalSymptom.StressResponseSymptom",
+            "entity_class": "UNKNOWN"
+          },
+          "relation_type": "CAUSES",
+          "confidence": 0.94,
+          "evidence": "2% 高粱水提物与 10% 蚯蚓粪的配施显著改善了玉米的形态指标、叶绿素含量、抗氧化酶活性以及叶片与根系中的 K+/Na+ 比值和 K+ 含量",
+          "evidence_source": "manual-review(y)",
+          "manual_review": "2026-Q3 MDPI-4papers"
+        },
+        {
+          "pair_id": "DOC-017-PM004",
+          "cause_event": {
+            "text": "2% 高粱水提物与 10% 蚯蚓粪的配施",
+            "type": "CAUSE_EVENT",
+            "concept": "有机改良剂",
+            "sub_class_id": "Treatment.Treatment",
+            "entity_class": "UNKNOWN"
+          },
+          "effect_event": {
+            "text": "在较高盐碱水平下降低了 Na+ 浓度、H2O2 和丙二醛含量",
+            "type": "EFFECT_EVENT",
+            "concept": "氧化损伤减轻",
+            "sub_class_id": "FunctionalSymptom.StressResponseSymptom",
+            "entity_class": "UNKNOWN"
+          },
+          "relation_type": "CAUSES",
+          "confidence": 0.94,
+          "evidence": "在较高盐碱水平下降低了 Na+ 浓度、H2O2 和丙二醛含量",
+          "evidence_source": "manual-review(y)",
+          "manual_review": "2026-Q3 MDPI-4papers"
+        },
+        {
+          "pair_id": "DOC-017-PM005",
+          "cause_event": {
+            "text": "土施蚯蚓粪与叶面喷施高粱水提物共同作用",
+            "type": "CAUSE_EVENT",
+            "concept": "有机改良剂",
+            "sub_class_id": "Treatment.Treatment",
+            "entity_class": "UNKNOWN"
+          },
+          "effect_event": {
+            "text": "通过激活抗氧化防御系统、提高叶绿素含量并减少盐碱下 Na+ 的积累，从而缓解了盐碱对玉米的伤害",
+            "type": "EFFECT_EVENT",
+            "concept": "胁迫缓解",
+            "sub_class_id": "FunctionalSymptom.StressResponseSymptom",
+            "entity_class": "UNKNOWN"
+          },
+          "relation_type": "CAUSES",
+          "confidence": 0.91,
+          "evidence": "土施蚯蚓粪与叶面喷施高粱水提物共同作用，通过激活抗氧化防御系统、提高叶绿素含量并减少盐碱下 Na+ 的积累，从而缓解了盐碱对玉米的伤害",
+          "evidence_source": "manual-review(y)",
+          "manual_review": "2026-Q3 MDPI-4papers"
+        }
+      ],
+      "causal_chains": [],
+      "annotations": [
+        {
+          "decision": "y",
+          "cause_concept": "蚯蚓粪",
+          "effect_concept": "胁迫缓解",
+          "confidence": 0.93,
+          "evidence": "分别施用 10% 蚯蚓粪与 2% 高粱水提物提高了幼苗对盐碱的耐受性",
+          "reviewer": "manual-review",
+          "source": "2026-Q3 MDPI 四篇复审"
+        },
+        {
+          "decision": "y",
+          "cause_concept": "有机改良剂",
+          "effect_concept": "抗氧化能力提升",
+          "confidence": 0.94,
+          "evidence": "2% 高粱水提物与 10% 蚯蚓粪的配施显著改善了玉米的形态指标、叶绿素含量、抗氧化酶活性以及叶片与根系中的 K+/Na+ 比值和 K+ 含量",
+          "reviewer": "manual-review",
+          "source": "2026-Q3 MDPI 四篇复审"
+        },
+        {
+          "decision": "y",
+          "cause_concept": "有机改良剂",
+          "effect_concept": "氧化损伤减轻",
+          "confidence": 0.94,
+          "evidence": "在较高盐碱水平下降低了 Na+ 浓度、H2O2 和丙二醛含量",
+          "reviewer": "manual-review",
+          "source": "2026-Q3 MDPI 四篇复审"
+        },
+        {
+          "decision": "y",
+          "cause_concept": "有机改良剂",
+          "effect_concept": "胁迫缓解",
+          "confidence": 0.91,
+          "evidence": "土施蚯蚓粪与叶面喷施高粱水提物共同作用，通过激活抗氧化防御系统、提高叶绿素含量并减少盐碱下 Na+ 的积累，从而缓解了盐碱对玉米的伤害",
+          "reviewer": "manual-review",
+          "source": "2026-Q3 MDPI 四篇复审"
+        }
+      ]
+    },
+    {
+      "doc_id": "DOC-018",
+      "domain": "水稻-盐碱胁迫",
+      "title": "水稻盐碱胁迫可持续耐受性的多层策略综述",
+      "source": {
+        "type": "sci_paper",
+        "publisher": "MDPI Int. J. Mol. Sci.",
+        "year": 2025,
+        "url": "https://www.mdpi.com/1422-0067/26/13/6025",
+        "doi": "10.3390/ijms26136025"
+      },
+      "text": "耕地中的盐分积累造成严重的非生物胁迫，导致全球耕地面积减少 10%，直接威胁粮食生产与农业可持续发展。为实现高且可持续的粮食生产，必须将传统农作措施与现代技术结合，以修复受盐碱侵害的耕地。本综述系统整合了近期针对水稻的研究进展，从综合策略层面提升水稻对盐碱胁迫的耐受力。我们系统论述了初生代谢与次生代谢途径、有机改良剂、微生物共生及植物生长调节剂在减轻盐害负面效应中的作用；并重点介绍了基因编辑与转录调控等新兴遗传和表观遗传技术在培育耐盐碱水稻品种中的意义。生理学研究揭示了水稻植株对盐碱胁迫的响应过程，生化分析鉴定了与胁迫相关的代谢物，微生物学研究发现了有益植物-微生物互作关系，分子方法则筛选出关键耐盐基因，这些层面共同为培育耐盐碱水稻品种提供了不可或缺的科学依据。本文全面梳理了从农艺管理、生理适应到分子育种与微生物应用的多层策略体系，这些策略在近几十年间不断完善与发展，为深入理解并改进水稻的耐盐碱机制奠定了基础框架，也为未来抗逆水稻栽培系统的研究与落地实施提供了重要的理论支撑。",
+      "causal_pairs": [
+        {
+          "pair_id": "DOC-018-G01",
+          "cause_event": {
+            "text": "严重的非生物胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "复合胁迫"
+          },
+          "effect_event": {
+            "text": "全球耕地面积减少 10%",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.94,
+          "evidence": "导致全球耕地面积减少 10%",
+          "evidence_source": "DOC-018",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-018-G02",
+          "cause_event": {
+            "text": "盐碱胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "盐碱胁迫"
+          },
+          "effect_event": {
+            "text": "盐害负面效应",
+            "type": "EFFECT_EVENT",
+            "concept": "生长受阻"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.91,
+          "evidence": "减轻盐害负面效应",
+          "evidence_source": "DOC-018",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-018-G03",
+          "cause_event": {
+            "text": "盐碱胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "盐碱胁迫"
+          },
+          "effect_event": {
+            "text": "水稻植株对盐碱胁迫的响应过程",
+            "type": "EFFECT_EVENT",
+            "concept": "胁迫缓解"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.9,
+          "evidence": "水稻植株对盐碱胁迫的响应过程",
+          "evidence_source": "DOC-018",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-018-G04",
+          "cause_event": {
+            "text": "盐碱胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "盐碱胁迫"
+          },
+          "effect_event": {
+            "text": "与胁迫相关的代谢物",
+            "type": "EFFECT_EVENT",
+            "concept": "次生代谢物变化"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.89,
+          "evidence": "生化分析鉴定了与胁迫相关的代谢物",
+          "evidence_source": "DOC-018",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-018-G05",
+          "cause_event": {
+            "text": "盐碱胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "盐碱胁迫"
+          },
+          "effect_event": {
+            "text": "关键耐盐基因",
+            "type": "EFFECT_EVENT",
+            "concept": "表观遗传变化"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.875,
+          "evidence": "分子方法则筛选出关键耐盐基因",
+          "evidence_source": "DOC-018",
+          "source": "active_learning",
+          "verified": true
+        }
+      ],
+      "causal_chains": [],
+      "annotations": [
+        {
+          "decision": "n",
+          "cause": "盐碱胁迫",
+          "effect": "复合胁迫",
+          "reason": "盐碱胁迫是复合胁迫的子类；包含关系非因果"
+        },
+        {
+          "decision": "s",
+          "cause": "盐碱胁迫",
+          "effect": "菌根共生",
+          "reason": "综述陈述研究发现X，非因果；正确方向应该是菌根->缓解"
+        }
+      ]
+    },
+    {
+      "doc_id": "DOC-019",
+      "domain": "水稻-灌溉管理",
+      "title": "控制灌溉通过调节生长与生物量分配缓解拔节期淹涝诱导的水稻产量损失",
+      "source": {
+        "type": "sci_paper",
+        "publisher": "MDPI Plants",
+        "year": 2026,
+        "url": "https://www.mdpi.com/2223-7747/15/15/2405",
+        "doi": "10.3390/plants15152405"
+      },
+      "text": "水稻拔节期的淹涝威胁着降雨集中、排水受限地区的产量稳定性，然而淹涝之前的水分管理制度如何改变水稻的生长状况与产量形成过程，目前认识仍然不足。本研究开展两年盆栽试验，在拔节期设置三种淹涝深度和两种淹涝时长，比较控制灌溉（CI）与传统淹灌（CF）的表现。淹涝处理使得水稻分蘖数增加、株高升高、总叶面积增大，但净光合速率降低、籽粒产量下降；产量损失随淹涝深度的增加和淹涝时长的延长而加剧。在相同淹涝处理下，控制灌溉（CI）抑制了营养器官的过度扩张，维持了更高的净光合速率、更大的根系干物质积累和更高的根冠比，均优于传统淹灌（CF）。相对于各自无淹涝的对照，CI 下产量损失范围为 4.11%～39.33%，而 CF 下损失高达 5.63%～52.50%。CI 较低的产量损失与其保持了更高的有效穗数、更高的结实率，以及更好的光合活性与根系生物量密切相关。研究表明，淹涝之前的水分管理方式能够影响拔节期淹涝下的生物量分配与产量形成过程；采用控制灌溉并结合及时排涝可有效降低暴露于短期淹涝的水稻系统中的产量风险。",
+      "causal_pairs": [
+        {
+          "pair_id": "DOC-019-G01",
+          "cause_event": {
+            "text": "淹涝处理",
+            "type": "CAUSE_EVENT",
+            "concept": "土壤过湿"
+          },
+          "effect_event": {
+            "text": "株高升高",
+            "type": "EFFECT_EVENT",
+            "concept": "植株徒长"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "淹涝处理使得水稻分蘖数增加、株高升高",
+          "evidence_source": "DOC-019",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-019-G02",
+          "cause_event": {
+            "text": "淹涝处理",
+            "type": "CAUSE_EVENT",
+            "concept": "土壤过湿"
+          },
+          "effect_event": {
+            "text": "总叶面积增大",
+            "type": "EFFECT_EVENT",
+            "concept": "植株徒长"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "淹涝处理使得水稻分蘖数增加、株高升高、总叶面积增大",
+          "evidence_source": "DOC-019",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-019-G03",
+          "cause_event": {
+            "text": "淹涝处理",
+            "type": "CAUSE_EVENT",
+            "concept": "土壤过湿"
+          },
+          "effect_event": {
+            "text": "水稻分蘖数增加",
+            "type": "EFFECT_EVENT",
+            "concept": "细胞分裂受阻"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "淹涝处理使得水稻分蘖数增加",
+          "evidence_source": "DOC-019",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-019-G04",
+          "cause_event": {
+            "text": "淹涝处理",
+            "type": "CAUSE_EVENT",
+            "concept": "土壤过湿"
+          },
+          "effect_event": {
+            "text": "净光合速率降低",
+            "type": "EFFECT_EVENT",
+            "concept": "光合作用下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "但净光合速率降低",
+          "evidence_source": "DOC-019",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-019-G05",
+          "cause_event": {
+            "text": "淹涝处理",
+            "type": "CAUSE_EVENT",
+            "concept": "土壤过湿"
+          },
+          "effect_event": {
+            "text": "籽粒产量下降",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.96,
+          "evidence": "籽粒产量下降",
+          "evidence_source": "DOC-019",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-019-G06",
+          "cause_event": {
+            "text": "淹涝深度的增加",
+            "type": "CAUSE_EVENT",
+            "concept": "土壤过湿"
+          },
+          "effect_event": {
+            "text": "产量损失随淹涝深度的增加和淹涝时长的延长而加剧",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.94,
+          "evidence": "产量损失随淹涝深度的增加和淹涝时长的延长而加剧",
+          "evidence_source": "DOC-019",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-019-G07",
+          "cause_event": {
+            "text": "控制灌溉（CI）抑制了营养器官的过度扩张",
+            "type": "CAUSE_EVENT",
+            "concept": "养分分配失衡"
+          },
+          "effect_event": {
+            "text": "维持了更高的净光合速率",
+            "type": "EFFECT_EVENT",
+            "concept": "胁迫缓解"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.9,
+          "evidence": "控制灌溉（CI）抑制了营养器官的过度扩张，维持了更高的净光合速率",
+          "evidence_source": "DOC-019",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-019-G08",
+          "cause_event": {
+            "text": "控制灌溉（CI）抑制了营养器官的过度扩张",
+            "type": "CAUSE_EVENT",
+            "concept": "养分分配失衡"
+          },
+          "effect_event": {
+            "text": "更大的根系干物质积累",
+            "type": "EFFECT_EVENT",
+            "concept": "胁迫缓解"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.9,
+          "evidence": "控制灌溉（CI）抑制了营养器官的过度扩张，维持了更高的净光合速率、更大的根系干物质积累",
+          "evidence_source": "DOC-019",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-019-G09",
+          "cause_event": {
+            "text": "控制灌溉（CI）抑制了营养器官的过度扩张",
+            "type": "CAUSE_EVENT",
+            "concept": "养分分配失衡"
+          },
+          "effect_event": {
+            "text": "更高的根冠比",
+            "type": "EFFECT_EVENT",
+            "concept": "胁迫缓解"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.9,
+          "evidence": "控制灌溉（CI）抑制了营养器官的过度扩张，维持了更高的净光合速率、更大的根系干物质积累和更高的根冠比",
+          "evidence_source": "DOC-019",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-019-G10",
+          "cause_event": {
+            "text": "保持了更高的有效穗数",
+            "type": "CAUSE_EVENT",
+            "concept": "胁迫缓解"
+          },
+          "effect_event": {
+            "text": "CI 较低的产量损失",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "CI 较低的产量损失与其保持了更高的有效穗数、更高的结实率，以及更好的光合活性与根系生物量密切相关",
+          "evidence_source": "DOC-019",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-019-G11",
+          "cause_event": {
+            "text": "光合作用下降",
+            "type": "CAUSE_EVENT",
+            "concept": "光合作用下降"
+          },
+          "effect_event": {
+            "text": "产量下降",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-019",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-019-G12",
+          "cause_event": {
+            "text": "植株徒长",
+            "type": "CAUSE_EVENT",
+            "concept": "植株徒长"
+          },
+          "effect_event": {
+            "text": "养分分配失衡",
+            "type": "EFFECT_EVENT",
+            "concept": "养分分配失衡"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-019",
+          "source": "active_learning",
+          "verified": true
+        }
+      ],
+      "causal_chains": []
+    },
+    {
+      "doc_id": "DOC-020",
+      "domain": "水稻-高温胁迫",
+      "title": "灌浆期高温下不同施氮方式对水稻产量与品质的影响",
+      "source": {
+        "type": "sci_paper",
+        "publisher": "MDPI Agronomy",
+        "year": 2024,
+        "url": "https://www.mdpi.com/2073-4395/14/1/216",
+        "doi": "10.3390/agronomy14010216"
+      },
+      "text": "灌浆早期高温频发于中国南方稻区，对水稻产量和品质造成负面影响，已成为当地水稻生产的主要威胁。本研究以大面积推广的粳稻品种“武运粳31”为材料，在2020和2022两年设置灌浆前20天增温3.5℃的处理，重点研究抽穗期三种施氮方式——低量撒施氮肥（LBN）、高量撒施氮肥（HBN）与叶面喷施氮肥（FN）——对水稻器官温度、叶片光合、叶绿素荧光、产量与稻米品质及糊化和热特性的影响，以探索减轻高温对水稻生产不利后果的切实缓解措施。结果表明，灌浆期高温使得水稻株温升高、破坏叶绿素荧光系统并降低净光合速率，进而导致结实率和千粒重下降，2020年与2022年分别造成7.0%和13.9%的产量损失。此外，高温引起整精米率下降、垩白增加和糊化温度升高，从而使稻米品质恶化。在高温条件下，高量撒施氮肥（HBN）在2020年和2022年分别使水稻产量提高3.6%和13.0%，而叶面喷氮（FN）在2022年使产量提高11.5%，增产与结实率和千粒重的提高密切相关。低量撒施（LBN）对高温下水稻产量无显著影响。氮肥措施的增产效果与其降低株温、抵御高温对叶绿素荧光系统的破坏有关；三种施氮措施总体上还改善了稻米的加工品质与外观品质。",
+      "causal_pairs": [
+        {
+          "pair_id": "DOC-020-G01",
+          "cause_event": {
+            "text": "降低净光合速率",
+            "type": "CAUSE_EVENT",
+            "concept": "光合作用下降"
+          },
+          "effect_event": {
+            "text": "结实率下降",
+            "type": "EFFECT_EVENT",
+            "concept": "结实不良"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.9,
+          "evidence": "进而导致结实率和千粒重下降",
+          "evidence_source": "DOC-020",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-020-G02",
+          "cause_event": {
+            "text": "降低净光合速率",
+            "type": "CAUSE_EVENT",
+            "concept": "光合作用下降"
+          },
+          "effect_event": {
+            "text": "千粒重下降",
+            "type": "EFFECT_EVENT",
+            "concept": "千粒重下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.9,
+          "evidence": "进而导致结实率和千粒重下降",
+          "evidence_source": "DOC-020",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-020-G03",
+          "cause_event": {
+            "text": "结实率下降",
+            "type": "CAUSE_EVENT",
+            "concept": "结实不良"
+          },
+          "effect_event": {
+            "text": "产量损失",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "造成7.0%和13.9%的产量损失",
+          "evidence_source": "DOC-020",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-020-G04",
+          "cause_event": {
+            "text": "灌浆早期高温",
+            "type": "CAUSE_EVENT",
+            "concept": "灌浆期高温"
+          },
+          "effect_event": {
+            "text": "整精米率下降",
+            "type": "EFFECT_EVENT",
+            "concept": "稻米品质下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "高温引起整精米率下降",
+          "evidence_source": "DOC-020",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-020-G05",
+          "cause_event": {
+            "text": "灌浆早期高温",
+            "type": "CAUSE_EVENT",
+            "concept": "灌浆期高温"
+          },
+          "effect_event": {
+            "text": "糊化温度升高",
+            "type": "EFFECT_EVENT",
+            "concept": "稻米品质下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "高温引起糊化温度升高",
+          "evidence_source": "DOC-020",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-020-G06",
+          "cause_event": {
+            "text": "灌浆早期高温",
+            "type": "CAUSE_EVENT",
+            "concept": "灌浆期高温"
+          },
+          "effect_event": {
+            "text": "降低净光合速率",
+            "type": "EFFECT_EVENT",
+            "concept": "光合作用下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.96,
+          "evidence": "降低净光合速率",
+          "evidence_source": "DOC-020",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-020-G07",
+          "cause_event": {
+            "text": "灌浆早期高温",
+            "type": "CAUSE_EVENT",
+            "concept": "灌浆期高温"
+          },
+          "effect_event": {
+            "text": "破坏叶绿素荧光系统",
+            "type": "EFFECT_EVENT",
+            "concept": "光合系统失活"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.96,
+          "evidence": "破坏叶绿素荧光系统",
+          "evidence_source": "DOC-020",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-020-G08",
+          "cause_event": {
+            "text": "叶面喷氮（FN）",
+            "type": "CAUSE_EVENT",
+            "concept": "叶面喷肥"
+          },
+          "effect_event": {
+            "text": "水稻产量提高",
+            "type": "EFFECT_EVENT",
+            "concept": "胁迫缓解"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.925,
+          "evidence": "叶面喷氮（FN）在2022年使产量提高11.5%",
+          "evidence_source": "DOC-020",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-020-G09",
+          "cause_event": {
+            "text": "千粒重下降",
+            "type": "CAUSE_EVENT",
+            "concept": "千粒重下降"
+          },
+          "effect_event": {
+            "text": "产量损失",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.95,
+          "evidence": "造成7.0%和13.9%的产量损失",
+          "evidence_source": "DOC-020",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-020-G10",
+          "cause_event": {
+            "text": "灌浆早期高温",
+            "type": "CAUSE_EVENT",
+            "concept": "灌浆期高温"
+          },
+          "effect_event": {
+            "text": "垩白增加",
+            "type": "EFFECT_EVENT",
+            "concept": "垩白度上升"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "高温引起垩白增加",
+          "evidence_source": "DOC-020",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-020-G11",
+          "cause_event": {
+            "text": "垩白增加",
+            "type": "CAUSE_EVENT",
+            "concept": "垩白度上升"
+          },
+          "effect_event": {
+            "text": "稻米品质恶化",
+            "type": "EFFECT_EVENT",
+            "concept": "稻米品质下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.94,
+          "evidence": "从而使稻米品质恶化",
+          "evidence_source": "DOC-020",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-020-G12",
+          "cause_event": {
+            "text": "高温胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "高温胁迫"
+          },
+          "effect_event": {
+            "text": "产量下降",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-020",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-020-G13",
+          "cause_event": {
+            "text": "灌浆期高温",
+            "type": "CAUSE_EVENT",
+            "concept": "灌浆期高温"
+          },
+          "effect_event": {
+            "text": "千粒重下降",
+            "type": "EFFECT_EVENT",
+            "concept": "千粒重下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-020",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-020-G14",
+          "cause_event": {
+            "text": "光合作用下降",
+            "type": "CAUSE_EVENT",
+            "concept": "光合作用下降"
+          },
+          "effect_event": {
+            "text": "产量下降",
+            "type": "EFFECT_EVENT",
+            "concept": "产量下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-020",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-020-G15",
+          "cause_event": {
+            "text": "高温胁迫",
+            "type": "CAUSE_EVENT",
+            "concept": "高温胁迫"
+          },
+          "effect_event": {
+            "text": "稻米品质下降",
+            "type": "EFFECT_EVENT",
+            "concept": "稻米品质下降"
+          },
+          "relation_type": "DIRECT",
+          "confidence": 0.85,
+          "evidence": "知识库已知因果(strength=0.85)",
+          "evidence_source": "DOC-020",
+          "source": "active_learning",
+          "verified": true
+        },
+        {
+          "pair_id": "DOC-020-PM016",
+          "cause_event": {
+            "text": "灌浆早期高温频发",
+            "type": "CAUSE_EVENT",
+            "concept": "灌浆期高温",
+            "sub_class_id": "EnvFactor.WeatherParam",
+            "entity_class": "UNKNOWN"
+          },
+          "effect_event": {
+            "text": "水稻株温升高",
+            "type": "EFFECT_EVENT",
+            "concept": "高温胁迫",
+            "sub_class_id": "EnvFactor.WeatherParam",
+            "entity_class": "UNKNOWN"
+          },
+          "relation_type": "CAUSES",
+          "confidence": 0.83,
+          "evidence": "灌浆期高温使得水稻株温升高",
+          "evidence_source": "manual-review(y)",
+          "manual_review": "2026-Q3 MDPI-4papers"
+        },
+        {
+          "pair_id": "DOC-020-PM017",
+          "cause_event": {
+            "text": "降低株温",
+            "type": "CAUSE_EVENT",
+            "concept": "温度下降",
+            "sub_class_id": "Treatment.Treatment",
+            "entity_class": "UNKNOWN"
+          },
+          "effect_event": {
+            "text": "水稻产量提高",
+            "type": "EFFECT_EVENT",
+            "concept": "胁迫缓解",
+            "sub_class_id": "FunctionalSymptom.StressResponseSymptom",
+            "entity_class": "UNKNOWN"
+          },
+          "relation_type": "CAUSES",
+          "confidence": 0.88,
+          "evidence": "增产与结实率和千粒重的提高密切相关",
+          "evidence_source": "manual-review(y)",
+          "manual_review": "2026-Q3 MDPI-4papers"
+        }
+      ],
+      "causal_chains": [],
+      "annotations": [
+        {
+          "decision": "y",
+          "cause_concept": "灌浆期高温",
+          "effect_concept": "高温胁迫",
+          "confidence": 0.83,
+          "evidence": "灌浆期高温使得水稻株温升高",
+          "reviewer": "manual-review",
+          "source": "2026-Q3 MDPI 四篇复审"
+        },
+        {
+          "decision": "y",
+          "cause_concept": "温度下降",
+          "effect_concept": "胁迫缓解",
+          "confidence": 0.88,
+          "evidence": "增产与结实率和千粒重的提高密切相关",
+          "reviewer": "manual-review",
+          "source": "2026-Q3 MDPI 四篇复审"
+        },
+        {
+          "decision": "s",
+          "cause": "稻米品质下降",
+          "effect": "稻米品质下降",
+          "reason": "自循环 整精米率->品质恶化，concept相同"
+        },
+        {
+          "decision": "s",
+          "cause": "稻米品质下降",
+          "effect": "稻米品质下降",
+          "reason": "自循环 糊化温度->品质恶化，concept相同"
+        },
+        {
+          "decision": "s",
+          "cause": "胁迫缓解",
+          "effect": "胁迫缓解",
+          "reason": "自循环 HBN->产量提高 都兜底为胁迫缓解"
+        },
+        {
+          "decision": "s",
+          "cause": "胁迫缓解",
+          "effect": "胁迫缓解",
+          "reason": "自循环 HBN->抵御光合破坏 都兜底为胁迫缓解"
+        }
+      ]
+    }
+  ]
+}

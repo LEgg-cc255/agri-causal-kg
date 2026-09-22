@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+]>
+<!--
+  融合版本体 AKO-F v1.0 —— 实体层 + 事件层（纯类层次 TBox）
+  严格对应《融合版本体设计 AKO-F v1.md》§2 实体层 + §4 事件层。
+  按用户要求：只搭实体层与事件层，不含辅助类、关系层、知识单元、ABox 个体。
+  实体层：10 类语义实体 + OBSERVATION（无 Entity 根，平级为 owl:Thing 子类）。
+  事件层：EventType + 8 类事件。
+  Protégé：File -> Open 打开本文件即可。
+-->
+<rdf:RDF xmlns="http://agrikg.cn/ontology/fused/v1#"
+         xml:base="http://agrikg.cn/ontology/fused/v1"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:xml="http://www.w3.org/XML/1998/namespace"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:dcterms="http://purl.org/dc/terms/">
+
+    <!-- =================================================================== -->
+    <!-- 0. 本体元信息                                                       -->
+    <!-- =================================================================== -->
+    <owl:Ontology rdf:about="">
+        <dc:title xml:lang="zh">融合版农业知识图谱本体（实体层+事件层）</dc:title>
+        <dc:title xml:lang="en">Agri-KG Ontology - Fused (AKO-F) Entity and Event</dc:title>
+        <dc:description xml:lang="zh">仅含实体层（10 类语义实体+OBSERVATION）与事件层（8 类事件类型）的类层次，不含关系层/知识单元/辅助类/ABox 个体。对应方案 §2、§4。</dc:description>
+        <dcterms:created rdf:datatype="&xsd;date">2026-08-29</dcterms:created>
+        <dcterms:version>1.0</dcterms:version>
+    </owl:Ontology>
+
+    <!-- =================================================================== -->
+    <!-- 1. 实体层：10 类语义实体 + OBSERVATION（方案 §2）                   -->
+    <!--    无 Entity 根类；10 类平级为 owl:Thing 直接子类                   -->
+    <!-- =================================================================== -->
+
+    <!-- 作物 -->
+    <owl:Class rdf:about="#CROP">
+        <rdfs:label xml:lang="zh">作物</rdfs:label>
+        <rdfs:comment xml:lang="zh">受危害/栽培的作物。示例：水稻、玉米、番茄。语义主体；可作 r_affects/r_influence 客体、r_resist 主体。</rdfs:comment>
+    </owl:Class>
+
+    <!-- 病害 -->
+    <owl:Class rdf:about="#DISEASE">
+        <rdfs:label xml:lang="zh">病害</rdfs:label>
+        <rdfs:comment xml:lang="zh">病害。示例：稻瘟病、纹枯病。语义主体；r_affects 主体、r_exhibit 主体、r_caused_by 主体等。</rdfs:comment>
+    </owl:Class>
+
+    <!-- 虫害 -->
+    <owl:Class rdf:about="#PEST">
+        <rdfs:label xml:lang="zh">虫害/害虫</rdfs:label>
+        <rdfs:comment xml:lang="zh">★新增（吸收 A 生物胁迫拆分）：与病害对称承载虫害主线。示例：稻飞虱、二化螟。r_affects/r_exhibit 主体等。</rdfs:comment>
+    </owl:Class>
+
+    <!-- 病原 -->
+    <owl:Class rdf:about="#PATHOGEN">
+        <rdfs:label xml:lang="zh">病原</rdfs:label>
+        <rdfs:comment xml:lang="zh">★新增（吸收 A）：病三角缺失的第三角，与病害分离的独立实体。示例：稻瘟病菌(Pyricularia)。仅作 r_caused_by 客体。</rdfs:comment>
+    </owl:Class>
+
+    <!-- 症状及其部位子类型 -->
+    <owl:Class rdf:about="#SYMPTOM">
+        <rdfs:label xml:lang="zh">症状</rdfs:label>
+        <rdfs:comment xml:lang="zh">症状（子类型按部位）。示例：叶斑、枯心、白穗。吸收 A 部位化。</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="#FoliarSymptom">
+        <rdfs:subClassOf rdf:resource="#SYMPTOM"/>
+        <rdfs:label xml:lang="zh">叶部症状</rdfs:label>
+    </owl:Class>
+    <owl:Class rdf:about="#StemSymptom">
+        <rdfs:subClassOf rdf:resource="#SYMPTOM"/>
+        <rdfs:label xml:lang="zh">茎部症状</rdfs:label>
+    </owl:Class>
+    <owl:Class rdf:about="#PanicleSymptom">
+        <rdfs:subClassOf rdf:resource="#SYMPTOM"/>
+        <rdfs:label xml:lang="zh">穗部症状</rdfs:label>
+    </owl:Class>
+    <owl:Class rdf:about="#RootSymptom">
+        <rdfs:subClassOf rdf:resource="#SYMPTOM"/>
+        <rdfs:label xml:lang="zh">根部症状</rdfs:label>
+    </owl:Class>
+    <owl:Class rdf:about="#FruitSymptom">
+        <rdfs:subClassOf rdf:resource="#SYMPTOM"/>
+        <rdfs:label xml:lang="zh">果实症状</rdfs:label>
+    </owl:Class>
+
+    <!-- 防治措施 -->
+    <owl:Class rdf:about="#TREATMENT">
+        <rdfs:label xml:lang="zh">防治措施</rdfs:label>
+        <rdfs:comment xml:lang="zh">防治措施（药剂/农艺）。示例：三环唑、排水晒田。仅作 r_treat 主体。</rdfs:comment>
+    </owl:Class>
+
+    <!-- 环境因子及其参数子类型 -->
+    <owl:Class rdf:about="#ENV_FACTOR">
+        <rdfs:label xml:lang="zh">环境因子</rdfs:label>
+        <rdfs:comment xml:lang="zh">环境因子（子类型按参数）。示例：高温、高湿、干旱。作 r_influence/r_favor 主体、r_depend_on 客体。</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="#Temperature">
+        <rdfs:subClassOf rdf:resource="#ENV_FACTOR"/>
+        <rdfs:label xml:lang="zh">温度</rdfs:label>
+        <rdfs:comment xml:lang="zh">日均/昼夜温差/高温/低温。</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="#Humidity">
+        <rdfs:subClassOf rdf:resource="#ENV_FACTOR"/>
+        <rdfs:label xml:lang="zh">湿度</rdfs:label>
+        <rdfs:comment xml:lang="zh">空气相对湿度。</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="#Light">
+        <rdfs:subClassOf rdf:resource="#ENV_FACTOR"/>
+        <rdfs:label xml:lang="zh">光照</rdfs:label>
+        <rdfs:comment xml:lang="zh">时长/强度。</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="#Precipitation">
+        <rdfs:subClassOf rdf:resource="#ENV_FACTOR"/>
+        <rdfs:label xml:lang="zh">降水</rdfs:label>
+        <rdfs:comment xml:lang="zh">雨量/连阴雨。</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="#Soil">
+        <rdfs:subClassOf rdf:resource="#ENV_FACTOR"/>
+        <rdfs:label xml:lang="zh">土壤</rdfs:label>
+        <rdfs:comment xml:lang="zh">质地/肥力N-P-K/酸碱度/有机质。</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="#WaterQuality">
+        <rdfs:subClassOf rdf:resource="#ENV_FACTOR"/>
+        <rdfs:label xml:lang="zh">水质</rdfs:label>
+        <rdfs:comment xml:lang="zh">盐度/硬度/重金属。</rdfs:comment>
+    </owl:Class>
+
+    <!-- 生育期 -->
+    <owl:Class rdf:about="#GROWTH_STAGE">
+        <rdfs:label xml:lang="zh">生育期</rdfs:label>
+        <rdfs:comment xml:lang="zh">生育期。示例：分蘖期、孕穗期、坐果期。作 r_occur_in 客体；物候事件槽位；时序锚点。</rdfs:comment>
+    </owl:Class>
+
+    <!-- 空间及其子类型 -->
+    <owl:Class rdf:about="#LOCATION">
+        <rdfs:label xml:lang="zh">空间</rdfs:label>
+        <rdfs:comment xml:lang="zh">空间（省/稻区/地块/设施）。示例：广东省、华南稻区。只作 r_spread_in/观测 客体与边属性，不参与语义关系主体侧。</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="#Region">
+        <rdfs:subClassOf rdf:resource="#LOCATION"/>
+        <rdfs:label xml:lang="zh">产区</rdfs:label>
+    </owl:Class>
+    <owl:Class rdf:about="#Plot">
+        <rdfs:subClassOf rdf:resource="#LOCATION"/>
+        <rdfs:label xml:lang="zh">地块</rdfs:label>
+    </owl:Class>
+    <owl:Class rdf:about="#Facility">
+        <rdfs:subClassOf rdf:resource="#LOCATION"/>
+        <rdfs:label xml:lang="zh">设施</rdfs:label>
+        <rdfs:comment xml:lang="zh">日光温室/大棚/连栋。</rdfs:comment>
+    </owl:Class>
+
+    <!-- 时间及其子类型 -->
+    <owl:Class rdf:about="#TIME">
+        <rdfs:label xml:lang="zh">时间</rdfs:label>
+        <rdfs:comment xml:lang="zh">时间（点/区间/物候期）。示例：6月、2026-06-01。只作 r_occur_in/观测 客体与边属性。</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="#TimePoint">
+        <rdfs:subClassOf rdf:resource="#TIME"/>
+        <rdfs:label xml:lang="zh">时间点</rdfs:label>
+    </owl:Class>
+    <owl:Class rdf:about="#TimeInterval">
+        <rdfs:subClassOf rdf:resource="#TIME"/>
+        <rdfs:label xml:lang="zh">时间区间</rdfs:label>
+    </owl:Class>
+    <owl:Class rdf:about="#PhenologicalPeriod">
+        <rdfs:subClassOf rdf:resource="#TIME"/>
+        <rdfs:label xml:lang="zh">物候期</rdfs:label>
+    </owl:Class>
+
+    <!-- 观测（图谱增强实体，按模态挂载多模态数据，不进入核心语义 Mask） -->
+    <owl:Class rdf:about="#OBSERVATION">
+        <rdfs:label xml:lang="zh">观测</rdfs:label>
+        <rdfs:comment xml:lang="zh">★图谱增强实体（多模态挂载）：承载环境观测、图像/文本证据，独立于核心语义 Mask，不进入 M_type。下分媒体资产，按数据模态细分。</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="#MediaAsset">
+        <rdfs:subClassOf rdf:resource="#OBSERVATION"/>
+        <rdfs:label xml:lang="zh">媒体资产</rdfs:label>
+        <rdfs:comment xml:lang="zh">多模态数据的统一容器，按数据模态细分下级。</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="#TextDocument">
+        <rdfs:subClassOf rdf:resource="#MediaAsset"/>
+        <rdfs:label xml:lang="zh">文本资料</rdfs:label>
+        <rdfs:comment xml:lang="zh">文本模态：诊断报告、田间记录、文献文本等语言数据。</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="#SensorSeries">
+        <rdfs:subClassOf rdf:resource="#MediaAsset"/>
+        <rdfs:label xml:lang="zh">传感器时序</rdfs:label>
+        <rdfs:comment xml:lang="zh">时序模态：带时间戳的传感器连续数值数据（温/湿/光/降雨等）。</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="#ImageAsset">
+        <rdfs:subClassOf rdf:resource="#MediaAsset"/>
+        <rdfs:label xml:lang="zh">图像</rdfs:label>
+        <rdfs:comment xml:lang="zh">视觉模态：病虫害照片、作物表型图像、遥感图像等。</rdfs:comment>
+    </owl:Class>
+
+    <!-- =================================================================== -->
+    <!-- 2. 事件层：EventType + 8 类事件类型（方案 §4）                      -->
+    <!--    事件=知识单元复合载体，不作为图谱实体节点                         -->
+    <!-- =================================================================== -->
+    <owl:Class rdf:about="#EventType">
+        <rdfs:label xml:lang="zh">事件类型</rdfs:label>
+        <rdfs:comment xml:lang="zh">事件是知识单元的复合载体（r 取事件类型时按槽位填充），不作为图谱实体节点。E=(event_type, 槽位集合, 模态约束, 因果角色 R)。</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="#DiseaseOccurrenceEvent">
+        <rdfs:subClassOf rdf:resource="#EventType"/>
+        <rdfs:label xml:lang="zh">病害发生</rdfs:label>
+        <rdfs:comment xml:lang="zh">槽位(C,D,S,τ,λ,A)；主要模态：文本+图像(+环境)。</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="#PestOccurrenceEvent">
+        <rdfs:subClassOf rdf:resource="#EventType"/>
+        <rdfs:label xml:lang="zh">虫害发生</rdfs:label>
+        <rdfs:comment xml:lang="zh">★新增。槽位(C,P,S,τ,λ,A)；主要模态：文本+图像(+环境)。</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="#EnvironmentalInfluenceEvent">
+        <rdfs:subClassOf rdf:resource="#EventType"/>
+        <rdfs:label xml:lang="zh">环境影响</rdfs:label>
+        <rdfs:comment xml:lang="zh">槽位(A,C,D,τ)；主要模态：环境+文本。</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="#ControlEvent">
+        <rdfs:subClassOf rdf:resource="#EventType"/>
+        <rdfs:label xml:lang="zh">防治</rdfs:label>
+        <rdfs:comment xml:lang="zh">槽位(C,D/P,TREATMENT,τ)；主要模态：文本。</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="#PhenologyEvent">
+        <rdfs:subClassOf rdf:resource="#EventType"/>
+        <rdfs:label xml:lang="zh">物候</rdfs:label>
+        <rdfs:comment xml:lang="zh">槽位(C,GROWTH_STAGE,τ)；主要模态：文本+环境。</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="#SpreadEvent">
+        <rdfs:subClassOf rdf:resource="#EventType"/>
+        <rdfs:label xml:lang="zh">扩散</rdfs:label>
+        <rdfs:comment xml:lang="zh">槽位(D/P,LOCATION,τ)；主要模态：文本。</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="#GrowthDevelopmentEvent">
+        <rdfs:subClassOf rdf:resource="#EventType"/>
+        <rdfs:label xml:lang="zh">生长发育</rdfs:label>
+        <rdfs:comment xml:lang="zh">★新增。槽位(C,GROWTH_STAGE/器官,τ)；主要模态：文本(+图像)。</rdfs:comment>
+    </owl:Class>
+    <owl:Class rdf:about="#QualityFormationEvent">
+        <rdfs:subClassOf rdf:resource="#EventType"/>
+        <rdfs:label xml:lang="zh">品质形成</rdfs:label>
+        <rdfs:comment xml:lang="zh">★新增。槽位(C,性状,τ)；主要模态：文本(+环境)。</rdfs:comment>
+    </owl:Class>
+
+</rdf:RDF>

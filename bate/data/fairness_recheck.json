@@ -1,0 +1,13 @@
+{
+  "num_questions": 38,
+  "baseline": {
+    "raw_recall": 0.211,
+    "normalized_recall": 0.355,
+    "questions_improved": 13
+  },
+  "causalrag": {
+    "raw_recall": 0.785,
+    "normalized_recall": 0.825,
+    "questions_improved": 4
+  }
+}

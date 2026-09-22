@@ -1,0 +1,101 @@
+{
+  "version": "1.1",
+  "description": "bate 因果图谱与项目组 agri-kg-ontology.ttl 本体的关系映射表",
+  "ontology_source": "agri-kg-ontology.ttl（根目录）",
+  "structure_diff": {
+    "project_ontology": "ENV →(r_favor)→ DISEASE →(r_exhibit)→ SYMPTOM; DISEASE →(r_affects)→ CROP（病害中心设计，Disease 中转）",
+    "my_graph": "ENV →(TRIGGERS)→ SYMPTOM（无 Disease 节点，一跳）; ENV →(INFLUENCE)→ CROP; BioticStress →(AFFECTS)→ CROP",
+    "key_gap": "TRIGGERS 是把项目组两跳（r_favor ⊕ r_exhibit）压成一跳的快捷方式；AFFECTS 已对齐项目组 f:affects（具体病害/虫害→作物）"
+  },
+  "relations": [
+    {
+      "my_relation": "INFLUENCE",
+      "ontology_relation": "f:influence",
+      "source_layer": "ako_f",
+      "domain": "EnvFactor",
+      "range": "Crop",
+      "note": "已对齐项目组本体；作物主体通过此边表达，不在症状节点上加 crops 属性",
+      "path_constraint_role": "路径推理的作物约束锚点（环境因子路径）：起点必须是影响该作物的 EnvFactor",
+      "instances": "21 条 INFLUENCE 边（番茄 7、水稻 14）"
+    },
+    {
+      "my_relation": "AFFECTS",
+      "ontology_relation": "f:affects",
+      "source_layer": "ako_f",
+      "domain": "BioticStress(Disease|Pest)",
+      "range": "Crop",
+      "note": "已对齐项目组本体；具体病害/虫害节点的作物归属",
+      "path_constraint_role": "路径推理的作物约束锚点（生物胁迫路径）：起点必须是病害该作物的 BioticStress",
+      "instances": "18 个具体病害/虫害节点 + 20 条 AFFECTS 边（稻瘟病→水稻、番茄晚疫病→番茄等）"
+    },
+    {
+      "my_relation": "TRIGGERS",
+      "ontology_relation": "f:triggers",
+      "source_layer": "extension",
+      "domain": "EnvFactor",
+      "range": "FunctionalSymptom",
+      "note": "已对齐项目组本体；语义上 ≈ r_favor ⊕ r_exhibit 的快捷方式（项目组通过 Disease 中转）"
+    },
+    {
+      "my_relation": "PROPAGATES",
+      "ontology_relation": "f:propagates",
+      "source_layer": "extension",
+      "domain": "Entity",
+      "range": "Entity",
+      "note": "已对齐项目组本体；通用因果传导"
+    },
+    {
+      "my_relation": "ALLEVIATES",
+      "ontology_relation": "f:alleviates",
+      "source_layer": "extension",
+      "domain": "Treatment",
+      "range": "Symptom|EnvFactor|BioticStress",
+      "note": "已对齐项目组本体；防治措施对症状/胁迫的缓解"
+    },
+    {
+      "my_relation": "(未实现) FAVOR",
+      "ontology_relation": "f:favor",
+      "source_layer": "ako_f",
+      "domain": "EnvFactor",
+      "range": "Disease|Pest",
+      "note": "项目组本体核心关系；暂不实现（环境→促进→病害，需补建 EnvFactor→Disease 边）"
+    },
+    {
+      "my_relation": "(未实现) EXHIBIT",
+      "ontology_relation": "f:exhibit",
+      "source_layer": "ako_f",
+      "domain": "Disease|Pest",
+      "range": "AnatomicalSymptom",
+      "note": "项目组本体核心关系；暂不实现（病害→表现→症状，需补建 Disease→Symptom 边）"
+    },
+    {
+      "my_relation": "(未实现) TREAT",
+      "ontology_relation": "f:treat",
+      "source_layer": "ako_f",
+      "domain": "Treatment",
+      "range": "Disease|Pest",
+      "note": "项目组本体核心关系；暂不实现（防治措施→治疗→病害）"
+    },
+    {
+      "my_relation": "(未实现) RESIST",
+      "ontology_relation": "f:resist",
+      "source_layer": "ako_f",
+      "domain": "Crop",
+      "range": "Disease|Pest",
+      "note": "项目组本体核心关系；暂不实现（作物→抗→病害）"
+    }
+  ],
+  "node_alignment": {
+    "EnvFactor": "对齐 f:EnvFactor（环境因子）",
+    "FunctionalSymptom": "对齐 f:FunctionalSymptom（功能症状，通用不绑定作物）",
+    "Treatment": "对齐 f:Treatment（防治措施）",
+    "BioticStress": "对齐 f:BioticStress / f:Disease / f:Pest（生物胁迫，含 18 个具体病害/虫害节点）",
+    "Crop": "对齐 f:Crop（作物主体节点）"
+  },
+  "path_constraint_logic": {
+    "description": "路径推理的作物约束（search_paths 的 crop_concept 参数）",
+    "logic": "起点 s 必须满足 (s)-[:INFLUENCE]->(:Crop{concept:$crop}) OR (s)-[:AFFECTS]->(:Crop{concept:$crop})",
+    "fallback": "约束无结果时自动回退全图查询",
+    "coverage": "环境因子路径（INFLUENCE 21 条）+ 生物胁迫路径（AFFECTS 20 条）"
+  }
+}

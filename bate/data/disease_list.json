@@ -1,0 +1,150 @@
+{
+  "version": "1.0",
+  "description": "具体病害/虫害节点清单（对齐项目组本体 f:Disease / f:Pest / f:affects）",
+  "diseases": [
+    {
+      "concept": "番茄早疫病",
+      "entity_class": "生物胁迫",
+      "sub_class_id": "BioticStress.Disease",
+      "sub_class_name": "病害",
+      "affects_crops": ["番茄"],
+      "pathogen": "链格孢菌"
+    },
+    {
+      "concept": "番茄晚疫病",
+      "entity_class": "生物胁迫",
+      "sub_class_id": "BioticStress.Disease",
+      "sub_class_name": "病害",
+      "affects_crops": ["番茄", "马铃薯"],
+      "pathogen": "致病疫霉"
+    },
+    {
+      "concept": "番茄灰霉病",
+      "entity_class": "生物胁迫",
+      "sub_class_id": "BioticStress.Disease",
+      "sub_class_name": "病害",
+      "affects_crops": ["番茄", "黄瓜"],
+      "pathogen": "灰葡萄孢菌"
+    },
+    {
+      "concept": "稻瘟病",
+      "entity_class": "生物胁迫",
+      "sub_class_id": "BioticStress.Disease",
+      "sub_class_name": "病害",
+      "affects_crops": ["水稻"],
+      "pathogen": "稻瘟病菌"
+    },
+    {
+      "concept": "水稻纹枯病",
+      "entity_class": "生物胁迫",
+      "sub_class_id": "BioticStress.Disease",
+      "sub_class_name": "病害",
+      "affects_crops": ["水稻"],
+      "pathogen": "立枯丝核菌"
+    },
+    {
+      "concept": "稻飞虱",
+      "entity_class": "生物胁迫",
+      "sub_class_id": "BioticStress.Pest",
+      "sub_class_name": "虫害",
+      "affects_crops": ["水稻"],
+      "pathogen": ""
+    },
+    {
+      "concept": "二化螟",
+      "entity_class": "生物胁迫",
+      "sub_class_id": "BioticStress.Pest",
+      "sub_class_name": "虫害",
+      "affects_crops": ["水稻"],
+      "pathogen": ""
+    },
+    {
+      "concept": "小麦赤霉病",
+      "entity_class": "生物胁迫",
+      "sub_class_id": "BioticStress.Disease",
+      "sub_class_name": "病害",
+      "affects_crops": ["小麦"],
+      "pathogen": "禾谷镰孢菌"
+    },
+    {
+      "concept": "小麦白粉病",
+      "entity_class": "生物胁迫",
+      "sub_class_id": "BioticStress.Disease",
+      "sub_class_name": "病害",
+      "affects_crops": ["小麦", "大麦"],
+      "pathogen": "禾本科布氏白粉菌"
+    },
+    {
+      "concept": "小麦条锈病",
+      "entity_class": "生物胁迫",
+      "sub_class_id": "BioticStress.Disease",
+      "sub_class_name": "病害",
+      "affects_crops": ["小麦"],
+      "pathogen": "条形柄锈菌"
+    },
+    {
+      "concept": "麦蚜",
+      "entity_class": "生物胁迫",
+      "sub_class_id": "BioticStress.Pest",
+      "sub_class_name": "虫害",
+      "affects_crops": ["小麦"],
+      "pathogen": ""
+    },
+    {
+      "concept": "玉米大斑病",
+      "entity_class": "生物胁迫",
+      "sub_class_id": "BioticStress.Disease",
+      "sub_class_name": "病害",
+      "affects_crops": ["玉米"],
+      "pathogen": "凸脐蠕孢菌"
+    },
+    {
+      "concept": "玉米螟",
+      "entity_class": "生物胁迫",
+      "sub_class_id": "BioticStress.Pest",
+      "sub_class_name": "虫害",
+      "affects_crops": ["玉米"],
+      "pathogen": ""
+    },
+    {
+      "concept": "油菜菌核病",
+      "entity_class": "生物胁迫",
+      "sub_class_id": "BioticStress.Disease",
+      "sub_class_name": "病害",
+      "affects_crops": ["油菜"],
+      "pathogen": "核盘菌"
+    },
+    {
+      "concept": "大豆花叶病毒病",
+      "entity_class": "生物胁迫",
+      "sub_class_id": "BioticStress.Disease",
+      "sub_class_name": "病害",
+      "affects_crops": ["大豆"],
+      "pathogen": "大豆花叶病毒"
+    },
+    {
+      "concept": "棉铃虫",
+      "entity_class": "生物胁迫",
+      "sub_class_id": "BioticStress.Pest",
+      "sub_class_name": "虫害",
+      "affects_crops": ["棉花"],
+      "pathogen": ""
+    },
+    {
+      "concept": "黄瓜霜霉病",
+      "entity_class": "生物胁迫",
+      "sub_class_id": "BioticStress.Disease",
+      "sub_class_name": "病害",
+      "affects_crops": ["黄瓜"],
+      "pathogen": "古巴假霜霉"
+    },
+    {
+      "concept": "葡萄霜霉病",
+      "entity_class": "生物胁迫",
+      "sub_class_id": "BioticStress.Disease",
+      "sub_class_name": "病害",
+      "affects_crops": ["葡萄"],
+      "pathogen": "葡萄生单轴霉"
+    }
+  ]
+}

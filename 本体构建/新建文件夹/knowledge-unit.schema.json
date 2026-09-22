@@ -1,0 +1,214 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://agrikg.cn/schema/knowledge-unit/1.0",
+  "title": "农业知识单元 Knowledge Unit（融合版 AKO-F）",
+  "description": "知识单元七元组 ku=(s,r,o,t,l,c,m) 的 JSON Schema。融合版修订：①实体类型 8→10（+PEST/PATHOGEN）；②关系 6→10（+affects/influence/favor/caused_by/resist，occur_in 语义修订）；③事件类型 5→8；④新增 ku_type 判别 REL/EVENT（解决 r 双态歧义）；⑤事件知识单元必填 slot 槽位；⑥evidence 多模态溯源；⑦v1.2 新增 related_events 事件间关联（ku_precedes/ku_causes/ku_inhibits），在保持事件非图谱节点定位下显式表达事件链。",
+  "type": "object",
+  "required": ["ku_type", "s", "r", "o", "t", "l", "c", "m"],
+  "properties": {
+    "ku_type": {
+      "type": "string",
+      "enum": ["REL", "EVENT"],
+      "description": "知识单元判别：REL=关系三元组；EVENT=事件复合载体（r 取事件类型，槽位按事件模板填充）"
+    },
+    "uri": { "type": "string", "description": "知识单元唯一标识" },
+    "s": {
+      "$ref": "#/definitions/entity",
+      "description": "主体实体（前 8 类语义实体，不含 LOCATION/TIME）"
+    },
+    "r": { "$ref": "#/definitions/relation_or_event", "description": "关系类型或事件类型（双态）" },
+    "o": { "$ref": "#/definitions/entity", "description": "客体实体（前 8 类语义实体 ∪ LOCATION/TIME）" },
+    "slot": {
+      "$ref": "#/definitions/event_slots",
+      "description": "事件槽位（ku_type=EVENT 时必填，按事件类型模板校验）"
+    },
+    "t": { "$ref": "#/definitions/time_triple", "description": "时间三元组 t=(t_start, t_end, stage)" },
+    "l": { "$ref": "#/definitions/space_triple", "description": "空间三元组 l=(province, lon, lat)" },
+    "c": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "融合置信度"
+    },
+    "m": { "$ref": "#/definitions/modality", "description": "模态可用性标记 m=(m_text, m_img, m_env)" },
+    "evidence": {
+      "type": "array",
+      "description": "多模态证据溯源（吸收 A 的 hasEvidence）",
+      "items": { "$ref": "#/definitions/evidence" }
+    },
+    "related_events": {
+      "type": "array",
+      "description": "事件间关联（v1.2 新增）：仅对 ku_type=EVENT 的知识单元有意义，显式表达与其他事件知识单元的时序/因果/抑制关系，支撑事件链推理",
+      "items": { "$ref": "#/definitions/event_relation" }
+    },
+    "source": { "type": "string", "description": "语料/文档来源" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "ku_type": { "const": "EVENT" } } },
+      "then": {
+        "required": ["slot"],
+        "properties": { "slot": { "minProperties": 2 } }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "r": { "properties": { "kind": { "const": "relation" } } }
+        }
+      },
+      "then": {
+        "properties": {
+          "s": { "$ref": "#/definitions/entity" },
+          "o": { "$ref": "#/definitions/entity" }
+        }
+      }
+    }
+  ],
+  "definitions": {
+    "entity": {
+      "type": "object",
+      "required": ["entity_type", "name"],
+      "properties": {
+        "entity_type": { "$ref": "#/definitions/entity_type" },
+        "name": { "type": "string", "description": "实体名称（同义归一后标准名）" },
+        "uri": { "type": "string", "description": "实体唯一标识（优先复用 AGROVOC/CO/PO 编码）" },
+        "aliases": { "type": "array", "items": { "type": "string" }, "description": "别名（用于同义归一）" }
+      }
+    },
+    "entity_type": {
+      "type": "string",
+      "enum": [
+        "CROP", "DISEASE", "PEST", "PATHOGEN", "SYMPTOM",
+        "TREATMENT", "ENV_FACTOR", "GROWTH_STAGE", "LOCATION", "TIME",
+        "OBSERVATION"
+      ],
+      "description": "实体类型（10 类语义实体 + OBSERVATION 观测增强）"
+    },
+    "relation_or_event": {
+      "type": "object",
+      "required": ["kind"],
+      "properties": {
+        "kind": { "enum": ["relation", "event_type"] },
+        "relation": { "$ref": "#/definitions/relation" },
+        "event_type": { "$ref": "#/definitions/event_type" }
+      }
+    },
+    "relation": {
+      "type": "string",
+      "enum": [
+        "affects", "influence", "favor", "exhibit", "caused_by",
+        "treat", "occur_in", "depend_on", "spread_in", "resist"
+      ],
+      "description": "核心关系（10 类）"
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "disease_occurrence", "pest_occurrence", "environmental_influence",
+        "control", "phenology", "spread", "growth_development", "quality_formation"
+      ],
+      "description": "事件类型（8 类，可扩展）"
+    },
+    "event_slots": {
+      "type": "object",
+      "description": "事件论元槽位。各事件类型必填槽位见设计文档 §4.2：\n病害发生(C,D,S,τ,λ,A)；虫害发生(C,P,S,τ,λ,A)；环境影响(A,C,D,τ)；防治(C,D/P,TREATMENT,τ)；物候(C,GROWTH_STAGE,τ)；扩散(D/P,LOCATION,τ)；生长发育(C,GROWTH_STAGE,τ)；品质形成(C,性状,τ)",
+      "properties": {
+        "C": { "$ref": "#/definitions/entity", "description": "作物槽（∈ CROP）" },
+        "D": { "$ref": "#/definitions/entity", "description": "病害槽（∈ DISEASE）" },
+        "P": { "$ref": "#/definitions/entity", "description": "虫害槽（∈ PEST）" },
+        "S": { "$ref": "#/definitions/entity", "description": "症状槽（∈ SYMPTOM）" },
+        "A": { "$ref": "#/definitions/entity", "description": "环境条件槽（∈ ENV_FACTOR）" },
+        "TREATMENT": { "$ref": "#/definitions/entity", "description": "防治措施槽（∈ TREATMENT）" },
+        "GROWTH_STAGE": { "$ref": "#/definitions/entity", "description": "生育期槽（∈ GROWTH_STAGE）" },
+        "TRAIT": { "$ref": "#/definitions/entity", "description": "性状槽（品质形成事件）" },
+        "tau": { "$ref": "#/definitions/time_triple", "description": "事件时间 τ" },
+        "lambda": { "$ref": "#/definitions/space_triple", "description": "事件空间 λ" }
+      }
+    },
+    "time_triple": {
+      "type": "object",
+      "required": ["t_start", "t_end", "stage"],
+      "properties": {
+        "t_start": { "type": "string", "examples": ["2026-06-01"] },
+        "t_end": { "type": "string", "examples": ["2026-06-30"] },
+        "stage": { "type": "string", "examples": ["孕穗期"], "description": "生育期（GROWTH_STAGE）" }
+      }
+    },
+    "space_triple": {
+      "type": "object",
+      "required": ["province", "lon", "lat"],
+      "properties": {
+        "province": { "type": "string", "examples": ["广东省"] },
+        "lon": { "type": "number", "minimum": -180, "maximum": 180 },
+        "lat": { "type": "number", "minimum": -90, "maximum": 90 }
+      }
+    },
+    "modality": {
+      "type": "object",
+      "properties": {
+        "m_text": { "type": "boolean", "description": "文本模态可用" },
+        "m_img": { "type": "boolean", "description": "图像模态可用" },
+        "m_env": { "type": "boolean", "description": "环境时序模态可用" }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["type", "uri"],
+      "properties": {
+        "type": { "enum": ["image", "text", "env_series"] },
+        "uri": { "type": "string", "description": "证据资源 URI（图像/文本/传感器序列）" },
+        "role": { "type": "string", "description": "证据角色，如 symptom_image / source_text / env_observation" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "event_relation": {
+      "type": "object",
+      "required": ["relation_type", "target_ku_uri"],
+      "description": "事件间关联（v1.2 新增）：表达本事件知识单元与目标事件知识单元之间的时序/因果/抑制关系",
+      "properties": {
+        "relation_type": {
+          "enum": ["precedes", "causes", "inhibits"],
+          "description": "事件间关系类型：precedes=本事件先于目标事件（可通过 TimeTriple 比较自动生成）；causes=本事件导致/触发目标事件（如环境影响→病害发生）；inhibits=本事件抑制目标事件（如防治→扩散）"
+        },
+        "target_ku_uri": { "type": "string", "description": "目标事件知识单元的唯一标识 URI" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1, "description": "该事件间关系的置信度（自动生成的可设为 0.8，人工审核后可调整）" },
+        "generation_method": { "enum": ["auto_time_compare", "auto_causal_rule", "semi_auto_review", "manual"], "description": "生成方式：auto_time_compare=时间比较自动生成（precedes）；auto_causal_rule=基于因果规则库自动候选（causes/inhibits）；semi_auto_review=自动候选+人工审核；manual=人工标注" }
+      }
+    }
+  },
+  "examples": [
+    {
+      "ku_type": "REL",
+      "uri": "ku:rel_0001",
+      "s": { "entity_type": "DISEASE", "name": "稻瘟病", "uri": "agrovoc:c_15820" },
+      "r": { "kind": "relation", "relation": "affects" },
+      "o": { "entity_type": "CROP", "name": "水稻", "uri": "agrovoc:c_2630" },
+      "t": { "t_start": "2026-06-01", "t_end": "2026-06-30", "stage": "孕穗期" },
+      "l": { "province": "广东省", "lon": 113.27, "lat": 23.13 },
+      "c": 0.93,
+      "m": { "m_text": true, "m_img": false, "m_env": true }
+    },
+    {
+      "ku_type": "EVENT",
+      "uri": "ku:event_0001",
+      "r": { "kind": "event_type", "event_type": "disease_occurrence" },
+      "slot": {
+        "C": { "entity_type": "CROP", "name": "水稻" },
+        "D": { "entity_type": "DISEASE", "name": "稻瘟病" },
+        "S": { "entity_type": "SYMPTOM", "name": "叶部梭形病斑" },
+        "A": { "entity_type": "ENV_FACTOR", "name": "高温高湿" },
+        "tau": { "t_start": "2026-06-01", "t_end": "2026-06-15", "stage": "孕穗期" },
+        "lambda": { "province": "广东省", "lon": 113.27, "lat": 23.13 }
+      },
+      "t": { "t_start": "2026-06-01", "t_end": "2026-06-15", "stage": "孕穗期" },
+      "l": { "province": "广东省", "lon": 113.27, "lat": 23.13 },
+      "c": 0.88,
+      "m": { "m_text": true, "m_img": true, "m_env": true },
+      "evidence": [
+        { "type": "image", "uri": "obs:img_1023", "role": "symptom_image", "confidence": 0.95 },
+        { "type": "env_series", "uri": "obs:env_0521", "role": "env_observation", "confidence": 0.90 }
+      ]
+    }
+  ]
+}

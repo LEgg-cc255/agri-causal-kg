@@ -1,0 +1,1242 @@
+{
+  "summary": {
+    "baseline": {
+      "total_claims": 503,
+      "verified": 20,
+      "hallucinated_concept": 366,
+      "hallucinated_relation": 117,
+      "hallucination_rate": 0.96,
+      "verification_rate": 0.04
+    },
+    "causalrag": {
+      "total_claims": 443,
+      "verified": 56,
+      "hallucinated_concept": 236,
+      "hallucinated_relation": 151,
+      "hallucination_rate": 0.874,
+      "verification_rate": 0.126
+    }
+  },
+  "per_question": [
+    {
+      "id": "QA-001",
+      "question": "造成空壳率上升的原因是什么？",
+      "baseline": {
+        "total_claims": 6,
+        "verified": 0,
+        "hallucinated_concept": 3,
+        "hallucinated_relation": 3,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 7,
+        "verified": 0,
+        "hallucinated_concept": 5,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-002",
+      "question": "高温低湿型干热风会导致什么后果？",
+      "baseline": {
+        "total_claims": 10,
+        "verified": 1,
+        "hallucinated_concept": 4,
+        "hallucinated_relation": 5,
+        "hallucination_rate": 0.9,
+        "verification_rate": 0.1
+      },
+      "causalrag": {
+        "total_claims": 11,
+        "verified": 1,
+        "hallucinated_concept": 6,
+        "hallucinated_relation": 4,
+        "hallucination_rate": 0.909,
+        "verification_rate": 0.091
+      }
+    },
+    {
+      "id": "QA-003",
+      "question": "为什么根系活力下降？",
+      "baseline": {
+        "total_claims": 6,
+        "verified": 0,
+        "hallucinated_concept": 5,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 10,
+        "verified": 1,
+        "hallucinated_concept": 8,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 0.9,
+        "verification_rate": 0.1
+      }
+    },
+    {
+      "id": "QA-004",
+      "question": "土壤过湿会带来什么影响？",
+      "baseline": {
+        "total_claims": 9,
+        "verified": 0,
+        "hallucinated_concept": 8,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 10,
+        "verified": 1,
+        "hallucinated_concept": 3,
+        "hallucinated_relation": 6,
+        "hallucination_rate": 0.9,
+        "verification_rate": 0.1
+      }
+    },
+    {
+      "id": "QA-005",
+      "question": "高温胁迫的影响是什么？",
+      "baseline": {
+        "total_claims": 16,
+        "verified": 3,
+        "hallucinated_concept": 6,
+        "hallucinated_relation": 7,
+        "hallucination_rate": 0.812,
+        "verification_rate": 0.188
+      },
+      "causalrag": {
+        "total_claims": 12,
+        "verified": 3,
+        "hallucinated_concept": 4,
+        "hallucinated_relation": 5,
+        "hallucination_rate": 0.75,
+        "verification_rate": 0.25
+      }
+    },
+    {
+      "id": "QA-006",
+      "question": "为什么水稻会灌浆不良？",
+      "baseline": {
+        "total_claims": 7,
+        "verified": 0,
+        "hallucinated_concept": 7,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 9,
+        "verified": 0,
+        "hallucinated_concept": 4,
+        "hallucinated_relation": 5,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-007",
+      "question": "为什么水分供需失衡？",
+      "baseline": {
+        "total_claims": 9,
+        "verified": 1,
+        "hallucinated_concept": 8,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 0.889,
+        "verification_rate": 0.111
+      },
+      "causalrag": {
+        "total_claims": 8,
+        "verified": 1,
+        "hallucinated_concept": 3,
+        "hallucinated_relation": 4,
+        "hallucination_rate": 0.875,
+        "verification_rate": 0.125
+      }
+    },
+    {
+      "id": "QA-008",
+      "question": "氧气扩散受阻会导致什么后果？",
+      "baseline": {
+        "total_claims": 8,
+        "verified": 0,
+        "hallucinated_concept": 7,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 10,
+        "verified": 0,
+        "hallucinated_concept": 6,
+        "hallucinated_relation": 4,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-009",
+      "question": "花期高温胁迫会带来什么影响？",
+      "baseline": {
+        "total_claims": 11,
+        "verified": 0,
+        "hallucinated_concept": 5,
+        "hallucinated_relation": 6,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 8,
+        "verified": 0,
+        "hallucinated_concept": 5,
+        "hallucinated_relation": 3,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-010",
+      "question": "低温冷害会导致什么后果？",
+      "baseline": {
+        "total_claims": 8,
+        "verified": 0,
+        "hallucinated_concept": 6,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 17,
+        "verified": 2,
+        "hallucinated_concept": 7,
+        "hallucinated_relation": 8,
+        "hallucination_rate": 0.882,
+        "verification_rate": 0.118
+      }
+    },
+    {
+      "id": "QA-011",
+      "question": "造成产量下降的原因是什么？",
+      "baseline": {
+        "total_claims": 10,
+        "verified": 2,
+        "hallucinated_concept": 6,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 0.8,
+        "verification_rate": 0.2
+      },
+      "causalrag": {
+        "total_claims": 7,
+        "verified": 0,
+        "hallucinated_concept": 5,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-012",
+      "question": "授粉受精障碍会带来什么影响？",
+      "baseline": {
+        "total_claims": 7,
+        "verified": 1,
+        "hallucinated_concept": 6,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 0.857,
+        "verification_rate": 0.143
+      },
+      "causalrag": {
+        "total_claims": 11,
+        "verified": 0,
+        "hallucinated_concept": 7,
+        "hallucinated_relation": 4,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-013",
+      "question": "造成灌浆期缩短的原因是什么？",
+      "baseline": {
+        "total_claims": 7,
+        "verified": 0,
+        "hallucinated_concept": 3,
+        "hallucinated_relation": 4,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 8,
+        "verified": 1,
+        "hallucinated_concept": 2,
+        "hallucinated_relation": 5,
+        "hallucination_rate": 0.875,
+        "verification_rate": 0.125
+      }
+    },
+    {
+      "id": "QA-014",
+      "question": "花粉活力下降会导致什么后果？",
+      "baseline": {
+        "total_claims": 13,
+        "verified": 0,
+        "hallucinated_concept": 11,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 12,
+        "verified": 1,
+        "hallucinated_concept": 4,
+        "hallucinated_relation": 7,
+        "hallucination_rate": 0.917,
+        "verification_rate": 0.083
+      }
+    },
+    {
+      "id": "QA-015",
+      "question": "缺素症会带来什么影响？",
+      "baseline": {
+        "total_claims": 6,
+        "verified": 0,
+        "hallucinated_concept": 6,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 11,
+        "verified": 2,
+        "hallucinated_concept": 3,
+        "hallucinated_relation": 6,
+        "hallucination_rate": 0.818,
+        "verification_rate": 0.182
+      }
+    },
+    {
+      "id": "QA-016",
+      "question": "千粒重下降是什么原因导致的？",
+      "baseline": {
+        "total_claims": 9,
+        "verified": 0,
+        "hallucinated_concept": 6,
+        "hallucinated_relation": 3,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 7,
+        "verified": 0,
+        "hallucinated_concept": 2,
+        "hallucinated_relation": 5,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-017",
+      "question": "同化物转运受阻会导致什么后果？",
+      "baseline": {
+        "total_claims": 10,
+        "verified": 0,
+        "hallucinated_concept": 8,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 12,
+        "verified": 0,
+        "hallucinated_concept": 8,
+        "hallucinated_relation": 4,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-018",
+      "question": "为什么番茄会落花落蕾？",
+      "baseline": {
+        "total_claims": 8,
+        "verified": 0,
+        "hallucinated_concept": 1,
+        "hallucinated_relation": 7,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 6,
+        "verified": 2,
+        "hallucinated_concept": 2,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 0.667,
+        "verification_rate": 0.333
+      }
+    },
+    {
+      "id": "QA-019",
+      "question": "灌浆期高温会导致什么后果？",
+      "baseline": {
+        "total_claims": 9,
+        "verified": 0,
+        "hallucinated_concept": 4,
+        "hallucinated_relation": 5,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 11,
+        "verified": 0,
+        "hallucinated_concept": 8,
+        "hallucinated_relation": 3,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-020",
+      "question": "为什么授粉失败？",
+      "baseline": {
+        "total_claims": 3,
+        "verified": 0,
+        "hallucinated_concept": 1,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 7,
+        "verified": 1,
+        "hallucinated_concept": 5,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 0.857,
+        "verification_rate": 0.143
+      }
+    },
+    {
+      "id": "QA-021",
+      "question": "为什么花药开裂受阻？",
+      "baseline": {
+        "total_claims": 5,
+        "verified": 0,
+        "hallucinated_concept": 2,
+        "hallucinated_relation": 3,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 10,
+        "verified": 3,
+        "hallucinated_concept": 4,
+        "hallucinated_relation": 3,
+        "hallucination_rate": 0.7,
+        "verification_rate": 0.3
+      }
+    },
+    {
+      "id": "QA-022",
+      "question": "为什么授粉受精障碍？",
+      "baseline": {
+        "total_claims": 6,
+        "verified": 0,
+        "hallucinated_concept": 5,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 8,
+        "verified": 3,
+        "hallucinated_concept": 3,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 0.625,
+        "verification_rate": 0.375
+      }
+    },
+    {
+      "id": "QA-023",
+      "question": "为什么番茄落花落蕾？",
+      "baseline": {
+        "total_claims": 9,
+        "verified": 0,
+        "hallucinated_concept": 7,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 7,
+        "verified": 1,
+        "hallucinated_concept": 4,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 0.857,
+        "verification_rate": 0.143
+      }
+    },
+    {
+      "id": "QA-024",
+      "question": "为什么水稻灌浆不良？",
+      "baseline": {
+        "total_claims": 10,
+        "verified": 0,
+        "hallucinated_concept": 4,
+        "hallucinated_relation": 6,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 6,
+        "verified": 0,
+        "hallucinated_concept": 4,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-025",
+      "question": "为什么番茄着果率下降？",
+      "baseline": {
+        "total_claims": 5,
+        "verified": 0,
+        "hallucinated_concept": 4,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 9,
+        "verified": 7,
+        "hallucinated_concept": 1,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 0.222,
+        "verification_rate": 0.778
+      }
+    },
+    {
+      "id": "QA-026",
+      "question": "为什么光照充足？",
+      "baseline": {
+        "total_claims": 0,
+        "verified": 0,
+        "hallucinated_concept": 0,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 0.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 3,
+        "verified": 0,
+        "hallucinated_concept": 3,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-027",
+      "question": "为什么水稻千粒重下降？",
+      "baseline": {
+        "total_claims": 3,
+        "verified": 0,
+        "hallucinated_concept": 1,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 10,
+        "verified": 2,
+        "hallucinated_concept": 5,
+        "hallucinated_relation": 3,
+        "hallucination_rate": 0.8,
+        "verification_rate": 0.2
+      }
+    },
+    {
+      "id": "QA-028",
+      "question": "为什么高温胁迫？",
+      "baseline": {
+        "total_claims": 15,
+        "verified": 2,
+        "hallucinated_concept": 10,
+        "hallucinated_relation": 3,
+        "hallucination_rate": 0.867,
+        "verification_rate": 0.133
+      },
+      "causalrag": {
+        "total_claims": 2,
+        "verified": 0,
+        "hallucinated_concept": 2,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-029",
+      "question": "为什么降温措施？",
+      "baseline": {
+        "total_claims": 5,
+        "verified": 1,
+        "hallucinated_concept": 3,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 0.8,
+        "verification_rate": 0.2
+      },
+      "causalrag": {
+        "total_claims": 2,
+        "verified": 0,
+        "hallucinated_concept": 2,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-030",
+      "question": "为什么高温干热胁迫？",
+      "baseline": {
+        "total_claims": 7,
+        "verified": 0,
+        "hallucinated_concept": 4,
+        "hallucinated_relation": 3,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 2,
+        "verified": 0,
+        "hallucinated_concept": 2,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-031",
+      "question": "高温干热胁迫会导致什么后果？",
+      "baseline": {
+        "total_claims": 9,
+        "verified": 0,
+        "hallucinated_concept": 7,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 14,
+        "verified": 1,
+        "hallucinated_concept": 5,
+        "hallucinated_relation": 8,
+        "hallucination_rate": 0.929,
+        "verification_rate": 0.071
+      }
+    },
+    {
+      "id": "QA-032",
+      "question": "为什么夜温过高？",
+      "baseline": {
+        "total_claims": 6,
+        "verified": 0,
+        "hallucinated_concept": 5,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 2,
+        "verified": 0,
+        "hallucinated_concept": 2,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-033",
+      "question": "为什么花期高温胁迫？",
+      "baseline": {
+        "total_claims": 6,
+        "verified": 1,
+        "hallucinated_concept": 4,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 0.833,
+        "verification_rate": 0.167
+      },
+      "causalrag": {
+        "total_claims": 2,
+        "verified": 0,
+        "hallucinated_concept": 2,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-034",
+      "question": "花期高温胁迫会导致什么后果？",
+      "baseline": {
+        "total_claims": 9,
+        "verified": 0,
+        "hallucinated_concept": 4,
+        "hallucinated_relation": 5,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 9,
+        "verified": 0,
+        "hallucinated_concept": 6,
+        "hallucinated_relation": 3,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-035",
+      "question": "为什么气候变暖？",
+      "baseline": {
+        "total_claims": 4,
+        "verified": 0,
+        "hallucinated_concept": 2,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 2,
+        "verified": 0,
+        "hallucinated_concept": 2,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-036",
+      "question": "为什么绒毡层受损？",
+      "baseline": {
+        "total_claims": 14,
+        "verified": 0,
+        "hallucinated_concept": 12,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 2,
+        "verified": 0,
+        "hallucinated_concept": 2,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-037",
+      "question": "绒毡层受损会导致什么后果？",
+      "baseline": {
+        "total_claims": 8,
+        "verified": 0,
+        "hallucinated_concept": 8,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 13,
+        "verified": 0,
+        "hallucinated_concept": 11,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-038",
+      "question": "为什么灌浆期高温？",
+      "baseline": {
+        "total_claims": 4,
+        "verified": 1,
+        "hallucinated_concept": 1,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 0.75,
+        "verification_rate": 0.25
+      },
+      "causalrag": {
+        "total_claims": 2,
+        "verified": 0,
+        "hallucinated_concept": 2,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-039",
+      "question": "着果率下降会导致什么？",
+      "baseline": {
+        "total_claims": 16,
+        "verified": 0,
+        "hallucinated_concept": 15,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 2,
+        "verified": 0,
+        "hallucinated_concept": 2,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-040",
+      "question": "日射量充足会导致什么？",
+      "baseline": {
+        "total_claims": 10,
+        "verified": 0,
+        "hallucinated_concept": 9,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 2,
+        "verified": 0,
+        "hallucinated_concept": 2,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-041",
+      "question": "为什么日射量充足？",
+      "baseline": {
+        "total_claims": 1,
+        "verified": 0,
+        "hallucinated_concept": 1,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 5,
+        "verified": 0,
+        "hallucinated_concept": 5,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-042",
+      "question": "落花落蕾会导致什么？",
+      "baseline": {
+        "total_claims": 7,
+        "verified": 0,
+        "hallucinated_concept": 5,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 2,
+        "verified": 0,
+        "hallucinated_concept": 2,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-043",
+      "question": "花粉量减少会导致什么？",
+      "baseline": {
+        "total_claims": 6,
+        "verified": 1,
+        "hallucinated_concept": 4,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 0.833,
+        "verification_rate": 0.167
+      },
+      "causalrag": {
+        "total_claims": 2,
+        "verified": 0,
+        "hallucinated_concept": 2,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-044",
+      "question": "为什么花粉量减少？",
+      "baseline": {
+        "total_claims": 8,
+        "verified": 0,
+        "hallucinated_concept": 5,
+        "hallucinated_relation": 3,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 6,
+        "verified": 2,
+        "hallucinated_concept": 3,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 0.667,
+        "verification_rate": 0.333
+      }
+    },
+    {
+      "id": "QA-045",
+      "question": "产量下降会导致什么？",
+      "baseline": {
+        "total_claims": 16,
+        "verified": 0,
+        "hallucinated_concept": 14,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 2,
+        "verified": 0,
+        "hallucinated_concept": 2,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-046",
+      "question": "稻米品质下降会导致什么？",
+      "baseline": {
+        "total_claims": 3,
+        "verified": 0,
+        "hallucinated_concept": 3,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 6,
+        "verified": 0,
+        "hallucinated_concept": 3,
+        "hallucinated_relation": 3,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-047",
+      "question": "为什么水稻稻米品质下降？",
+      "baseline": {
+        "total_claims": 12,
+        "verified": 0,
+        "hallucinated_concept": 10,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 17,
+        "verified": 0,
+        "hallucinated_concept": 12,
+        "hallucinated_relation": 5,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-048",
+      "question": "生殖器官异常会导致什么？",
+      "baseline": {
+        "total_claims": 16,
+        "verified": 0,
+        "hallucinated_concept": 16,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 2,
+        "verified": 0,
+        "hallucinated_concept": 2,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-049",
+      "question": "青枯会导致什么？",
+      "baseline": {
+        "total_claims": 5,
+        "verified": 0,
+        "hallucinated_concept": 5,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 2,
+        "verified": 0,
+        "hallucinated_concept": 2,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-050",
+      "question": "为什么青枯？",
+      "baseline": {
+        "total_claims": 6,
+        "verified": 0,
+        "hallucinated_concept": 5,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 10,
+        "verified": 0,
+        "hallucinated_concept": 4,
+        "hallucinated_relation": 6,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-051",
+      "question": "花期高温胁迫如何影响着果率下降？",
+      "baseline": {
+        "total_claims": 11,
+        "verified": 1,
+        "hallucinated_concept": 6,
+        "hallucinated_relation": 4,
+        "hallucination_rate": 0.909,
+        "verification_rate": 0.091
+      },
+      "causalrag": {
+        "total_claims": 6,
+        "verified": 3,
+        "hallucinated_concept": 1,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 0.5,
+        "verification_rate": 0.5
+      }
+    },
+    {
+      "id": "QA-052",
+      "question": "高温低湿型干热风如何影响着果率下降？",
+      "baseline": {
+        "total_claims": 14,
+        "verified": 0,
+        "hallucinated_concept": 13,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 9,
+        "verified": 4,
+        "hallucinated_concept": 4,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 0.556,
+        "verification_rate": 0.444
+      }
+    },
+    {
+      "id": "QA-053",
+      "question": "柱头干枯如何影响着果率下降？",
+      "baseline": {
+        "total_claims": 10,
+        "verified": 0,
+        "hallucinated_concept": 9,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 10,
+        "verified": 2,
+        "hallucinated_concept": 3,
+        "hallucinated_relation": 5,
+        "hallucination_rate": 0.8,
+        "verification_rate": 0.2
+      }
+    },
+    {
+      "id": "QA-054",
+      "question": "高温干热胁迫如何影响着果率下降？",
+      "baseline": {
+        "total_claims": 9,
+        "verified": 1,
+        "hallucinated_concept": 7,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 0.889,
+        "verification_rate": 0.111
+      },
+      "causalrag": {
+        "total_claims": 10,
+        "verified": 1,
+        "hallucinated_concept": 6,
+        "hallucinated_relation": 3,
+        "hallucination_rate": 0.9,
+        "verification_rate": 0.1
+      }
+    },
+    {
+      "id": "QA-055",
+      "question": "花药开裂受阻如何影响着果率下降？",
+      "baseline": {
+        "total_claims": 14,
+        "verified": 2,
+        "hallucinated_concept": 9,
+        "hallucinated_relation": 3,
+        "hallucination_rate": 0.857,
+        "verification_rate": 0.143
+      },
+      "causalrag": {
+        "total_claims": 6,
+        "verified": 1,
+        "hallucinated_concept": 1,
+        "hallucinated_relation": 4,
+        "hallucination_rate": 0.833,
+        "verification_rate": 0.167
+      }
+    },
+    {
+      "id": "QA-056",
+      "question": "高温胁迫如何影响着果率下降？",
+      "baseline": {
+        "total_claims": 10,
+        "verified": 2,
+        "hallucinated_concept": 8,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 0.8,
+        "verification_rate": 0.2
+      },
+      "causalrag": {
+        "total_claims": 6,
+        "verified": 3,
+        "hallucinated_concept": 2,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 0.5,
+        "verification_rate": 0.5
+      }
+    },
+    {
+      "id": "QA-057",
+      "question": "花药壁失水如何影响着果率下降？",
+      "baseline": {
+        "total_claims": 3,
+        "verified": 0,
+        "hallucinated_concept": 3,
+        "hallucinated_relation": 0,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 10,
+        "verified": 2,
+        "hallucinated_concept": 3,
+        "hallucinated_relation": 5,
+        "hallucination_rate": 0.8,
+        "verification_rate": 0.2
+      }
+    },
+    {
+      "id": "QA-058",
+      "question": "绒毡层受损如何影响着果率下降？",
+      "baseline": {
+        "total_claims": 8,
+        "verified": 0,
+        "hallucinated_concept": 7,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 8,
+        "verified": 0,
+        "hallucinated_concept": 4,
+        "hallucinated_relation": 4,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      }
+    },
+    {
+      "id": "QA-059",
+      "question": "花粉活力下降如何影响着果率下降？",
+      "baseline": {
+        "total_claims": 10,
+        "verified": 0,
+        "hallucinated_concept": 9,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 5,
+        "verified": 1,
+        "hallucinated_concept": 3,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 0.8,
+        "verification_rate": 0.2
+      }
+    },
+    {
+      "id": "QA-060",
+      "question": "生殖器官受损如何影响着果率下降？",
+      "baseline": {
+        "total_claims": 5,
+        "verified": 0,
+        "hallucinated_concept": 4,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 7,
+        "verified": 3,
+        "hallucinated_concept": 3,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 0.571,
+        "verification_rate": 0.429
+      }
+    },
+    {
+      "id": "QA-061",
+      "question": "柱头外露如何影响着果率下降？",
+      "baseline": {
+        "total_claims": 6,
+        "verified": 0,
+        "hallucinated_concept": 5,
+        "hallucinated_relation": 1,
+        "hallucination_rate": 1.0,
+        "verification_rate": 0.0
+      },
+      "causalrag": {
+        "total_claims": 9,
+        "verified": 1,
+        "hallucinated_concept": 6,
+        "hallucinated_relation": 2,
+        "hallucination_rate": 0.889,
+        "verification_rate": 0.111
+      }
+    }
+  ]
+}

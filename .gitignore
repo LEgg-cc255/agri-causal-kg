@@ -1,0 +1,86 @@
+# ========================= #
+#  Python 缓存
+# ========================= #
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ========================= #
+#  备份文件（旧版本）
+# ========================= #
+bate_backup_*/
+kb备份/
+
+# ========================= #
+#  Neo4j 数据（用户需自行构建）
+# ========================= #
+neo4j_data/
+
+# ========================= #
+#  临时图片和输出文件
+# ========================= #
+tmp_imgs/
+原图/
+tmp_ocr.png
+*.log
+
+# 根目录临时脚本输出
+abl_out*.txt
+agg_out.txt
+causes_out.txt
+check_out*.txt
+docx_out.txt
+extract_*.txt
+fig5_out.txt
+fig67_out.txt
+hall_out.txt
+migrate_*.txt
+supp_out.txt
+v2_out.txt
+v3_out.txt
+
+# 根目录临时脚本
+check_causes.py
+check_edges.py
+generate_paper.py
+gen_fig5_v2.py
+gen_fig67_v3.py
+gen_figs_exp_v6.py
+gen_report_v*.py
+read_docx.py
+
+# ========================= #
+#  参考文献 PDF（版权）
+# ========================= #
+1.因果事件抽取与因果关系识别/
+2.因果知识图谱构建/
+3.反事实推理与因果推断/
+4.因果agent/
+5.农业领域相关/
+
+# ========================= #
+#  临时测试脚本（以 _ 开头）
+# ========================= #
+bate/scripts/_*.py
+
+# 旧快照和日志
+bate/data/experiment_results_snapshot_prev.json
+bate/data/rerun_main_log.txt
+
+# ========================= #
+#  其他
+# ========================= #
+其他/
+汇报稿_*/
+*.docx
+
+# ========================= #
+#  IDE 和系统文件
+# ========================= #
+.vscode/
+.trae/
+.env
+*.swp
+.DS_Store
+Thumbs.db

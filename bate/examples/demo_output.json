@@ -1,0 +1,246 @@
+{
+  "text": "玉米大喇叭口期遭遇持续高温干旱，气孔关闭导致光合作用显著下降，籽粒灌浆受阻，最终百粒重降低，减产严重。",
+  "domain": "玉米",
+  "events": [
+    {
+      "text": "持续高温干旱",
+      "type": "CAUSE_EVENT",
+      "concept": "复合胁迫",
+      "subtype_id": "UNKNOWN",
+      "event_class": "UNKNOWN"
+    },
+    {
+      "text": "气孔关闭",
+      "type": "INTERMEDIATE",
+      "concept": "气孔关闭",
+      "subtype_id": "PHYS-Stomata",
+      "event_class": "生理生化事件"
+    },
+    {
+      "text": "光合作用显著下降",
+      "type": "INTERMEDIATE",
+      "concept": "光合作用下降",
+      "subtype_id": "PHYS-Photo",
+      "event_class": "生理生化事件"
+    },
+    {
+      "text": "籽粒灌浆受阻",
+      "type": "INTERMEDIATE",
+      "concept": "灌浆不良",
+      "subtype_id": "DEV-GrainFilling",
+      "event_class": "发育与产量事件"
+    },
+    {
+      "text": "百粒重降低",
+      "type": "INTERMEDIATE",
+      "concept": "千粒重下降",
+      "subtype_id": "DEV-GrainWt",
+      "event_class": "发育与产量事件"
+    },
+    {
+      "text": "减产严重",
+      "type": "EFFECT_EVENT",
+      "concept": "产量下降",
+      "subtype_id": "DEV-Yield",
+      "event_class": "发育与产量事件"
+    }
+  ],
+  "causal_pairs": [
+    {
+      "cause": {
+        "text": "持续高温干旱",
+        "type": "CAUSE_EVENT",
+        "concept": "复合胁迫",
+        "subtype_id": "UNKNOWN",
+        "event_class": "UNKNOWN"
+      },
+      "effect": {
+        "text": "气孔关闭",
+        "type": "INTERMEDIATE",
+        "concept": "气孔关闭",
+        "subtype_id": "PHYS-Stomata",
+        "event_class": "生理生化事件"
+      },
+      "is_causal": true,
+      "relation_type": "DIRECT",
+      "confidence": 0.83,
+      "reasoning": "本体无法判定，保留待置信度评分",
+      "evidence": "气孔关闭",
+      "kb_match": {
+        "known": false,
+        "forbidden": false,
+        "strength": 0.5,
+        "source": "知识库未覆盖"
+      }
+    },
+    {
+      "cause": {
+        "text": "气孔关闭",
+        "type": "INTERMEDIATE",
+        "concept": "气孔关闭",
+        "subtype_id": "PHYS-Stomata",
+        "event_class": "生理生化事件"
+      },
+      "effect": {
+        "text": "光合作用显著下降",
+        "type": "INTERMEDIATE",
+        "concept": "光合作用下降",
+        "subtype_id": "PHYS-Photo",
+        "event_class": "生理生化事件"
+      },
+      "is_causal": true,
+      "relation_type": "DIRECT",
+      "confidence": 0.975,
+      "reasoning": "本体方向合理: 生理生化事件 → 生理生化事件；知识库已知因果(strength=0.88)",
+      "evidence": "气孔关闭导致光合作用显著下降",
+      "kb_match": {
+        "known": true,
+        "forbidden": false,
+        "strength": 0.88,
+        "source": "已知因果规则(strength=0.88)"
+      }
+    },
+    {
+      "cause": {
+        "text": "光合作用显著下降",
+        "type": "INTERMEDIATE",
+        "concept": "光合作用下降",
+        "subtype_id": "PHYS-Photo",
+        "event_class": "生理生化事件"
+      },
+      "effect": {
+        "text": "籽粒灌浆受阻",
+        "type": "INTERMEDIATE",
+        "concept": "灌浆不良",
+        "subtype_id": "DEV-GrainFilling",
+        "event_class": "发育与产量事件"
+      },
+      "is_causal": true,
+      "relation_type": "DIRECT",
+      "confidence": 0.95,
+      "reasoning": "本体方向合理: 生理生化事件 → 发育与产量事件；知识库已知因果(strength=0.85)",
+      "evidence": "光合作用显著下降，籽粒灌浆受阻",
+      "kb_match": {
+        "known": true,
+        "forbidden": false,
+        "strength": 0.85,
+        "source": "已知因果规则(strength=0.85)"
+      }
+    },
+    {
+      "cause": {
+        "text": "籽粒灌浆受阻",
+        "type": "INTERMEDIATE",
+        "concept": "灌浆不良",
+        "subtype_id": "DEV-GrainFilling",
+        "event_class": "发育与产量事件"
+      },
+      "effect": {
+        "text": "百粒重降低",
+        "type": "INTERMEDIATE",
+        "concept": "千粒重下降",
+        "subtype_id": "DEV-GrainWt",
+        "event_class": "发育与产量事件"
+      },
+      "is_causal": true,
+      "relation_type": "DIRECT",
+      "confidence": 0.96,
+      "reasoning": "本体方向合理: 发育与产量事件 → 发育与产量事件；知识库已知因果(strength=0.88)",
+      "evidence": "籽粒灌浆受阻，最终百粒重降低",
+      "kb_match": {
+        "known": true,
+        "forbidden": false,
+        "strength": 0.88,
+        "source": "已知因果规则(strength=0.88)"
+      }
+    },
+    {
+      "cause": {
+        "text": "百粒重降低",
+        "type": "INTERMEDIATE",
+        "concept": "千粒重下降",
+        "subtype_id": "DEV-GrainWt",
+        "event_class": "发育与产量事件"
+      },
+      "effect": {
+        "text": "减产严重",
+        "type": "EFFECT_EVENT",
+        "concept": "产量下降",
+        "subtype_id": "DEV-Yield",
+        "event_class": "发育与产量事件"
+      },
+      "is_causal": true,
+      "relation_type": "DIRECT",
+      "confidence": 0.975,
+      "reasoning": "本体方向合理: 发育与产量事件 → 发育与产量事件；知识库已知因果(strength=0.9)",
+      "evidence": "百粒重降低，减产严重",
+      "kb_match": {
+        "known": true,
+        "forbidden": false,
+        "strength": 0.9,
+        "source": "已知因果规则(strength=0.9)"
+      }
+    },
+    {
+      "cause": {
+        "concept": "光合作用下降",
+        "text": "光合作用下降",
+        "type": "INTERMEDIATE"
+      },
+      "effect": {
+        "concept": "产量下降",
+        "text": "产量下降",
+        "type": "EFFECT_EVENT"
+      },
+      "is_causal": true,
+      "relation_type": "DIRECT",
+      "confidence": 0.85,
+      "reasoning": "本体无法判定，保留待置信度评分；知识库已知因果(strength=0.85)",
+      "evidence": "知识库已知因果(strength=0.85)",
+      "kb_match": {
+        "known": true,
+        "forbidden": false,
+        "strength": 0.85,
+        "source": "已知因果规则(strength=0.85)"
+      }
+    }
+  ],
+  "causal_chains": [
+    {
+      "chain": [
+        "UNKNOWN",
+        "气孔关闭",
+        "光合作用下降",
+        "灌浆不良",
+        "千粒重下降",
+        "产量下降"
+      ],
+      "events": [
+        "持续高温干旱",
+        "气孔关闭",
+        "光合作用显著下降",
+        "籽粒灌浆受阻",
+        "百粒重降低",
+        "减产严重"
+      ],
+      "confidence": 0.647,
+      "is_valid": true,
+      "reasoning": "LLM直接输出，边支持率80%"
+    }
+  ],
+  "stats": {
+    "num_events": 6,
+    "num_raw_pairs": 5,
+    "num_recalled_pairs": 1,
+    "num_confirmed_pairs": 6,
+    "num_chains": 1,
+    "num_llm_calls": 1,
+    "kb_enabled": true,
+    "kb_stats": {
+      "num_known_pairs": 115,
+      "num_forbidden_pairs": 61,
+      "num_causal_paths": 14
+    },
+    "avg_confidence": 0.9233333333333333
+  }
+}

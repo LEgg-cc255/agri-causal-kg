@@ -1,0 +1,16 @@
+# 农业因果知识获取与解释推理方法研究 - 依赖列表
+# Python >= 3.10
+
+# === Web 框架 ===
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.0.0
+
+# === 知识图谱 ===
+neo4j>=5.14.0
+
+# === LLM 客户端（OpenAI 兼容 API） ===
+openai>=1.10.0
+
+# === 工具库 ===
+python-dotenv>=1.0.0

@@ -1,0 +1,21 @@
+{
+  "_comment": "作物清单（16 种，后续可从项目组 AKO-F 本体迁入更多）。",
+  "crops": [
+    {"concept": "番茄",   "crop_class": "茄果类",   "aliases": ["番茄", "西红柿"]},
+    {"concept": "茄子",   "crop_class": "茄果类",   "aliases": ["茄子"]},
+    {"concept": "辣椒",   "crop_class": "茄果类",   "aliases": ["辣椒"]},
+    {"concept": "黄瓜",   "crop_class": "瓜类",     "aliases": ["黄瓜"]},
+    {"concept": "水稻",   "crop_class": "禾谷类",   "aliases": ["水稻", "稻"]},
+    {"concept": "小麦",   "crop_class": "禾谷类",   "aliases": ["小麦"]},
+    {"concept": "玉米",   "crop_class": "禾谷类",   "aliases": ["玉米"]},
+    {"concept": "大麦",   "crop_class": "禾谷类",   "aliases": ["大麦"]},
+    {"concept": "油菜",   "crop_class": "油料作物", "aliases": ["油菜"]},
+    {"concept": "大豆",   "crop_class": "油料作物", "aliases": ["大豆", "黄豆"]},
+    {"concept": "棉花",   "crop_class": "纤维作物", "aliases": ["棉花"]},
+    {"concept": "蔬菜",   "crop_class": "叶菜类",   "aliases": ["蔬菜"]},
+    {"concept": "茶",     "crop_class": "饮料作物", "aliases": ["茶树", "茶叶", "茶"]},
+    {"concept": "葡萄",   "crop_class": "果树类",   "aliases": ["葡萄"]},
+    {"concept": "苹果",   "crop_class": "果树类",   "aliases": ["苹果"]},
+    {"concept": "果树",   "crop_class": "果树类",   "aliases": ["果树"]}
+  ]
+}

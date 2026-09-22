@@ -1,0 +1,41 @@
+{
+  "version": "1.0",
+  "description": "病害/虫害完整因果链定义（方案B：病害专属症状 → 通用症状 → 产量/品质终点）",
+  "new_symptoms": [
+    {"concept": "叶片病斑", "entity_class": "功能症状", "sub_class_id": "FunctionalSymptom.AnatomicalSymptom", "sub_class_name": "解剖症状"},
+    {"concept": "茎叶枯萎", "entity_class": "功能症状", "sub_class_id": "FunctionalSymptom.AnatomicalSymptom", "sub_class_name": "解剖症状"},
+    {"concept": "果实腐烂", "entity_class": "功能症状", "sub_class_id": "FunctionalSymptom.AnatomicalSymptom", "sub_class_name": "解剖症状"},
+    {"concept": "茎秆腐朽", "entity_class": "功能症状", "sub_class_id": "FunctionalSymptom.AnatomicalSymptom", "sub_class_name": "解剖症状"},
+    {"concept": "养分运输受阻", "entity_class": "功能症状", "sub_class_id": "FunctionalSymptom.Physiological", "sub_class_name": "生理症状"},
+    {"concept": "吸食危害", "entity_class": "功能症状", "sub_class_id": "FunctionalSymptom.AnatomicalSymptom", "sub_class_name": "解剖症状"},
+    {"concept": "养分流失", "entity_class": "功能症状", "sub_class_id": "FunctionalSymptom.Physiological", "sub_class_name": "生理症状"},
+    {"concept": "茎秆蛀食", "entity_class": "功能症状", "sub_class_id": "FunctionalSymptom.AnatomicalSymptom", "sub_class_name": "解剖症状"},
+    {"concept": "穗腐", "entity_class": "功能症状", "sub_class_id": "FunctionalSymptom.AnatomicalSymptom", "sub_class_name": "解剖症状"},
+    {"concept": "叶片霉斑", "entity_class": "功能症状", "sub_class_id": "FunctionalSymptom.AnatomicalSymptom", "sub_class_name": "解剖症状"},
+    {"concept": "叶片锈斑", "entity_class": "功能症状", "sub_class_id": "FunctionalSymptom.AnatomicalSymptom", "sub_class_name": "解剖症状"},
+    {"concept": "叶片枯斑", "entity_class": "功能症状", "sub_class_id": "FunctionalSymptom.AnatomicalSymptom", "sub_class_name": "解剖症状"},
+    {"concept": "叶片花叶", "entity_class": "功能症状", "sub_class_id": "FunctionalSymptom.AnatomicalSymptom", "sub_class_name": "解剖症状"},
+    {"concept": "蕾铃蛀食", "entity_class": "功能症状", "sub_class_id": "FunctionalSymptom.AnatomicalSymptom", "sub_class_name": "解剖症状"},
+    {"concept": "叶片油浸状病斑", "entity_class": "功能症状", "sub_class_id": "FunctionalSymptom.AnatomicalSymptom", "sub_class_name": "解剖症状"}
+  ],
+  "chains": [
+    {"disease": "番茄早疫病", "crop": "番茄", "path": ["叶片病斑", "光合作用下降", "产量下降"]},
+    {"disease": "番茄晚疫病", "crop": "番茄", "path": ["茎叶枯萎", "光合作用下降", "产量下降"]},
+    {"disease": "番茄灰霉病", "crop": "番茄", "path": ["果实腐烂", "产量下降"]},
+    {"disease": "稻瘟病", "crop": "水稻", "path": ["叶片病斑", "光合作用下降", "灌浆不良", "产量下降"]},
+    {"disease": "水稻纹枯病", "crop": "水稻", "path": ["茎秆腐朽", "养分运输受阻", "产量下降"]},
+    {"disease": "稻飞虱", "crop": "水稻", "path": ["吸食危害", "养分流失", "产量下降"]},
+    {"disease": "二化螟", "crop": "水稻", "path": ["茎秆蛀食", "养分运输受阻", "产量下降"]},
+    {"disease": "小麦赤霉病", "crop": "小麦", "path": ["穗腐", "灌浆不良", "千粒重下降", "产量下降"]},
+    {"disease": "小麦白粉病", "crop": "小麦", "path": ["叶片霉斑", "光合作用下降", "产量下降"]},
+    {"disease": "小麦条锈病", "crop": "小麦", "path": ["叶片锈斑", "光合作用下降", "产量下降"]},
+    {"disease": "麦蚜", "crop": "小麦", "path": ["吸食危害", "养分流失", "产量下降"]},
+    {"disease": "玉米大斑病", "crop": "玉米", "path": ["叶片枯斑", "光合作用下降", "产量下降"]},
+    {"disease": "玉米螟", "crop": "玉米", "path": ["茎秆蛀食", "养分运输受阻", "产量下降"]},
+    {"disease": "油菜菌核病", "crop": "油菜", "path": ["茎秆腐朽", "养分运输受阻", "产量下降"]},
+    {"disease": "大豆花叶病毒病", "crop": "大豆", "path": ["叶片花叶", "光合作用下降", "产量下降"]},
+    {"disease": "棉铃虫", "crop": "棉花", "path": ["蕾铃蛀食", "落花落蕾", "产量下降"]},
+    {"disease": "黄瓜霜霉病", "crop": "黄瓜", "path": ["叶片病斑", "光合作用下降", "产量下降"]},
+    {"disease": "葡萄霜霉病", "crop": "葡萄", "path": ["叶片油浸状病斑", "光合作用下降", "产量下降"]}
+  ]
+}

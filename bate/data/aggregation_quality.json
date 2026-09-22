@@ -1,0 +1,17 @@
+{
+  "question_parse_hit_rate": 1.0,
+  "question_parse_hit_count": 61,
+  "question_parse_total": 61,
+  "expected_concept_in_kg_rate": 1.0,
+  "expected_concept_in_kg_count": 101,
+  "expected_concept_total": 101,
+  "aggregator": {
+    "total": 101,
+    "mapped": 100,
+    "with_subclass": 100,
+    "unknown": 1,
+    "mapped_rate": 0.99,
+    "with_subclass_rate": 0.99
+  },
+  "kg_concept_count": 119
+}
