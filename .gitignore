@@ -76,6 +76,28 @@ bate/data/rerun_main_log.txt
 *.docx
 
 # ========================= #
+#  报告/文档/图片（非项目运行必需）
+# ========================= #
+figs/
+*.md
+!README.md
+本体构建/
+agri-kg-ontology.ttl
+
+# ========================= #
+#  实验结果数据（非项目运行必需）
+# ========================= #
+bate/data/ablation_experiment*.json
+bate/data/aggregation_quality.json
+bate/data/agri_causal_qa_dataset.json
+bate/data/eval_*.json
+bate/data/experiment_results.json
+bate/data/fairness_recheck.json
+bate/data/hallucination_analysis.json
+bate/data/supplement_analysis.json
+bate/data/agri_causal_events_growth.json
+
+# ========================= #
 #  IDE 和系统文件
 # ========================= #
 .vscode/

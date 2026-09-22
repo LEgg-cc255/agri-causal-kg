@@ -60,8 +60,6 @@
 │   │   └── static/               # 前端（vis.js 图谱可视化）
 │   ├── examples/                 # 示例代码
 │   └── tests/                    # 测试
-├── agri-kg-ontology.ttl          # AKO-F v1.9 本体（项目组）
-├── 本体构建/                      # 本体设计文档
 ├── requirements.txt              # Python 依赖
 └── .gitignore
 ```
@@ -77,8 +75,8 @@
 ### 1. 克隆仓库
 
 ```bash
-git clone <仓库地址>
-cd <仓库名>
+git clone https://github.com/LEgg-cc255/agri-causal-kg.git
+cd agri-causal-kg
 ```
 
 ### 2. 安装 Python 依赖
